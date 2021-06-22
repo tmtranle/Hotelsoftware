@@ -1,0 +1,14 @@
+Zeiterfassung / Dokumentation
+
+21.06.2021
+Arbeitspakete festlegen			ab 08:15	bis 08:30	0,25 h
+ERD zeichnen					ab 08:30 	bis 09:30 	1,00 h
+Pause							ab 09:30	bis 10:00 	0,50 h
+Datenbankstruktur festlegen		ab 10:00 	bis 10:30	0,50 h
+Testdaten einpflegen			ab 10:30 	bis 12:15 	1,75 h
+Pause							ab 12:15	bis 13:00	0,75 h
+Kultur							ab 13:00 	bis 14:00 	1,00 h
+												TOTAL	5,75 h
+
+22.06.2021
+Testdaten einpflegen			ab 08:15	bis 
