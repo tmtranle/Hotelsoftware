@@ -10,12 +10,11 @@ using System.Windows.Forms;
 
 namespace Hotelsoftware
 {
-    public partial class Form1 : Form
+    public partial class Anreiseliste : Form
     {
-        public Form1()
+        public Anreiseliste()
         {
             InitializeComponent();
         }
-
     }
 }
