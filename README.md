@@ -7,4 +7,7 @@ Im Rahmen meiner Projektarbeit meines C# Kurses erarbeite ich mir selbstständig
 
 22.06.2021
 - Arbeit an graphischer Oberfläche
-- Fokus auf Gästekartei und Firmenkartei (neuen Gast anlegen, bearbeiten oder löschen) mit Datenbankanbindung
+- Fokus Firmenkartei (neue Firma anlegen, bearbeiten oder löschen) mit Datenbankanbindung
+
+23.06.2021
+- Fokus Gästedatei (neuen Gast anlegen, bearbeiten oder löschen) mit Datenbankanbindung
