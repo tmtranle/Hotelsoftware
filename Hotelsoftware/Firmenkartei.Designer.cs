@@ -1,7 +1,7 @@
 ﻿
 namespace Hotelsoftware
 {
-    partial class Firmendatei
+    partial class Firmenkartei
     {
         /// <summary>
         /// Required designer variable.
@@ -42,7 +42,7 @@ namespace Hotelsoftware
             this.TbLand = new System.Windows.Forms.TextBox();
             this.CmdFirmaSuchen = new System.Windows.Forms.Button();
             this.CmdFirmaEntfernen = new System.Windows.Forms.Button();
-            this.CmdFirmaBearbeiten = new System.Windows.Forms.Button();
+            this.CmdFirmaSpeichern = new System.Windows.Forms.Button();
             this.CmdFirmaHinzufuegen = new System.Windows.Forms.Button();
             this.LblHausnummer = new System.Windows.Forms.Label();
             this.TbHausnummer = new System.Windows.Forms.TextBox();
@@ -56,6 +56,8 @@ namespace Hotelsoftware
             this.LbFirmen.Name = "LbFirmen";
             this.LbFirmen.Size = new System.Drawing.Size(287, 274);
             this.LbFirmen.TabIndex = 0;
+            this.LbFirmen.SelectedIndexChanged += new System.EventHandler(this.LbFirmen_SelectedIndexChanged);
+            this.LbFirmen.DoubleClick += new System.EventHandler(this.LbFirmen_DoubleClick);
             // 
             // LblFirmenbezeichnung
             // 
@@ -70,8 +72,9 @@ namespace Hotelsoftware
             // 
             this.TbFirmenbezeichnung.Location = new System.Drawing.Point(318, 31);
             this.TbFirmenbezeichnung.Name = "TbFirmenbezeichnung";
-            this.TbFirmenbezeichnung.Size = new System.Drawing.Size(330, 23);
+            this.TbFirmenbezeichnung.Size = new System.Drawing.Size(322, 23);
             this.TbFirmenbezeichnung.TabIndex = 2;
+            this.TbFirmenbezeichnung.TextChanged += new System.EventHandler(this.TbFirmenbezeichnung_TextChanged);
             // 
             // LblStrasse
             // 
@@ -118,7 +121,7 @@ namespace Hotelsoftware
             // 
             this.TbStadt.Location = new System.Drawing.Point(425, 129);
             this.TbStadt.Name = "TbStadt";
-            this.TbStadt.Size = new System.Drawing.Size(223, 23);
+            this.TbStadt.Size = new System.Drawing.Size(215, 23);
             this.TbStadt.TabIndex = 8;
             // 
             // LblLand
@@ -134,12 +137,12 @@ namespace Hotelsoftware
             // 
             this.TbLand.Location = new System.Drawing.Point(318, 178);
             this.TbLand.Name = "TbLand";
-            this.TbLand.Size = new System.Drawing.Size(330, 23);
+            this.TbLand.Size = new System.Drawing.Size(322, 23);
             this.TbLand.TabIndex = 10;
             // 
             // CmdFirmaSuchen
             // 
-            this.CmdFirmaSuchen.Location = new System.Drawing.Point(317, 234);
+            this.CmdFirmaSuchen.Location = new System.Drawing.Point(318, 234);
             this.CmdFirmaSuchen.Name = "CmdFirmaSuchen";
             this.CmdFirmaSuchen.Size = new System.Drawing.Size(158, 23);
             this.CmdFirmaSuchen.TabIndex = 25;
@@ -150,7 +153,7 @@ namespace Hotelsoftware
             // CmdFirmaEntfernen
             // 
             this.CmdFirmaEntfernen.Enabled = false;
-            this.CmdFirmaEntfernen.Location = new System.Drawing.Point(489, 263);
+            this.CmdFirmaEntfernen.Location = new System.Drawing.Point(482, 263);
             this.CmdFirmaEntfernen.Name = "CmdFirmaEntfernen";
             this.CmdFirmaEntfernen.Size = new System.Drawing.Size(158, 23);
             this.CmdFirmaEntfernen.TabIndex = 24;
@@ -158,27 +161,27 @@ namespace Hotelsoftware
             this.CmdFirmaEntfernen.UseVisualStyleBackColor = true;
             this.CmdFirmaEntfernen.Click += new System.EventHandler(this.CmdFirmaEntfernen_Click);
             // 
-            // CmdFirmaBearbeiten
+            // CmdFirmaSpeichern
             // 
-            this.CmdFirmaBearbeiten.Enabled = false;
-            this.CmdFirmaBearbeiten.Location = new System.Drawing.Point(316, 263);
-            this.CmdFirmaBearbeiten.Name = "CmdFirmaBearbeiten";
-            this.CmdFirmaBearbeiten.Size = new System.Drawing.Size(158, 23);
-            this.CmdFirmaBearbeiten.TabIndex = 23;
-            this.CmdFirmaBearbeiten.Text = "Bearbeiten";
-            this.CmdFirmaBearbeiten.UseVisualStyleBackColor = true;
-            this.CmdFirmaBearbeiten.Click += new System.EventHandler(this.CmdFirmaBearbeiten_Click);
+            this.CmdFirmaSpeichern.Enabled = false;
+            this.CmdFirmaSpeichern.Location = new System.Drawing.Point(316, 263);
+            this.CmdFirmaSpeichern.Name = "CmdFirmaSpeichern";
+            this.CmdFirmaSpeichern.Size = new System.Drawing.Size(158, 23);
+            this.CmdFirmaSpeichern.TabIndex = 23;
+            this.CmdFirmaSpeichern.Text = "Änderungen speichern";
+            this.CmdFirmaSpeichern.UseVisualStyleBackColor = true;
+            this.CmdFirmaSpeichern.Click += new System.EventHandler(this.CmdFirmaSpeichern_Click);
             // 
             // CmdFirmaHinzufuegen
             // 
             this.CmdFirmaHinzufuegen.Enabled = false;
-            this.CmdFirmaHinzufuegen.Location = new System.Drawing.Point(489, 234);
+            this.CmdFirmaHinzufuegen.Location = new System.Drawing.Point(482, 234);
             this.CmdFirmaHinzufuegen.Name = "CmdFirmaHinzufuegen";
             this.CmdFirmaHinzufuegen.Size = new System.Drawing.Size(158, 23);
             this.CmdFirmaHinzufuegen.TabIndex = 22;
-            this.CmdFirmaHinzufuegen.Text = "Hinzufügen";
+            this.CmdFirmaHinzufuegen.Text = "Neu hinzufügen";
             this.CmdFirmaHinzufuegen.UseVisualStyleBackColor = true;
-            this.CmdFirmaHinzufuegen.Click += new System.EventHandler(this.CmdFirmaHinzufuegen_Click);
+            this.CmdFirmaHinzufuegen.Click += new System.EventHandler(this.CmdNeuFirmaHinzufuegen_Click);
             // 
             // LblHausnummer
             // 
@@ -193,19 +196,19 @@ namespace Hotelsoftware
             // 
             this.TbHausnummer.Location = new System.Drawing.Point(547, 80);
             this.TbHausnummer.Name = "TbHausnummer";
-            this.TbHausnummer.Size = new System.Drawing.Size(100, 23);
+            this.TbHausnummer.Size = new System.Drawing.Size(93, 23);
             this.TbHausnummer.TabIndex = 27;
             // 
-            // Firmendatei
+            // Firmenkartei
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(679, 312);
+            this.ClientSize = new System.Drawing.Size(666, 340);
             this.Controls.Add(this.TbHausnummer);
             this.Controls.Add(this.LblHausnummer);
             this.Controls.Add(this.CmdFirmaSuchen);
             this.Controls.Add(this.CmdFirmaEntfernen);
-            this.Controls.Add(this.CmdFirmaBearbeiten);
+            this.Controls.Add(this.CmdFirmaSpeichern);
             this.Controls.Add(this.CmdFirmaHinzufuegen);
             this.Controls.Add(this.TbLand);
             this.Controls.Add(this.LblLand);
@@ -218,8 +221,8 @@ namespace Hotelsoftware
             this.Controls.Add(this.TbFirmenbezeichnung);
             this.Controls.Add(this.LblFirmenbezeichnung);
             this.Controls.Add(this.LbFirmen);
-            this.Name = "Firmendatei";
-            this.Text = "Firmendatei";
+            this.Name = "Firmenkartei";
+            this.Text = "Firmenkartei";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -240,7 +243,7 @@ namespace Hotelsoftware
         private System.Windows.Forms.TextBox TbLand;
         private System.Windows.Forms.Button CmdFirmaSuchen;
         private System.Windows.Forms.Button CmdFirmaEntfernen;
-        private System.Windows.Forms.Button CmdFirmaBearbeiten;
+        private System.Windows.Forms.Button CmdFirmaSpeichern;
         private System.Windows.Forms.Button CmdFirmaHinzufuegen;
         private System.Windows.Forms.Label LblHausnummer;
         private System.Windows.Forms.TextBox TbHausnummer;

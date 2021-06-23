@@ -1,7 +1,7 @@
 ﻿
 namespace Hotelsoftware
 {
-    partial class Gaestedatei
+    partial class Gaestekartei
     {
         /// <summary>
         /// Required designer variable.
@@ -29,8 +29,8 @@ namespace Hotelsoftware
         /// </summary>
         private void InitializeComponent()
         {
-            this.CmdGastHinzufuegen = new System.Windows.Forms.Button();
-            this.CmdGastBearbeiten = new System.Windows.Forms.Button();
+            this.CmdGastNeuHinzufuegen = new System.Windows.Forms.Button();
+            this.CmdGastSpeichern = new System.Windows.Forms.Button();
             this.CmdGastEntfernen = new System.Windows.Forms.Button();
             this.LbGaeste = new System.Windows.Forms.ListBox();
             this.LblVorname = new System.Windows.Forms.Label();
@@ -55,26 +55,27 @@ namespace Hotelsoftware
             this.TbHausnummer = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // CmdGastHinzufuegen
+            // CmdGastNeuHinzufuegen
             // 
-            this.CmdGastHinzufuegen.Enabled = false;
-            this.CmdGastHinzufuegen.Location = new System.Drawing.Point(504, 310);
-            this.CmdGastHinzufuegen.Name = "CmdGastHinzufuegen";
-            this.CmdGastHinzufuegen.Size = new System.Drawing.Size(158, 23);
-            this.CmdGastHinzufuegen.TabIndex = 0;
-            this.CmdGastHinzufuegen.Text = "Hinzufügen";
-            this.CmdGastHinzufuegen.UseVisualStyleBackColor = true;
-            this.CmdGastHinzufuegen.Click += new System.EventHandler(this.CmdGastHinzufuegen_Click);
+            this.CmdGastNeuHinzufuegen.Enabled = false;
+            this.CmdGastNeuHinzufuegen.Location = new System.Drawing.Point(504, 310);
+            this.CmdGastNeuHinzufuegen.Name = "CmdGastNeuHinzufuegen";
+            this.CmdGastNeuHinzufuegen.Size = new System.Drawing.Size(158, 23);
+            this.CmdGastNeuHinzufuegen.TabIndex = 0;
+            this.CmdGastNeuHinzufuegen.Text = "Neu hinzufügen";
+            this.CmdGastNeuHinzufuegen.UseVisualStyleBackColor = true;
+            this.CmdGastNeuHinzufuegen.Click += new System.EventHandler(this.CmdGastNeuHinzufuegen_Click);
             // 
-            // CmdGastBearbeiten
+            // CmdGastSpeichern
             // 
-            this.CmdGastBearbeiten.Enabled = false;
-            this.CmdGastBearbeiten.Location = new System.Drawing.Point(331, 339);
-            this.CmdGastBearbeiten.Name = "CmdGastBearbeiten";
-            this.CmdGastBearbeiten.Size = new System.Drawing.Size(158, 23);
-            this.CmdGastBearbeiten.TabIndex = 1;
-            this.CmdGastBearbeiten.Text = "Bearbeiten";
-            this.CmdGastBearbeiten.UseVisualStyleBackColor = true;
+            this.CmdGastSpeichern.Enabled = false;
+            this.CmdGastSpeichern.Location = new System.Drawing.Point(331, 339);
+            this.CmdGastSpeichern.Name = "CmdGastSpeichern";
+            this.CmdGastSpeichern.Size = new System.Drawing.Size(158, 23);
+            this.CmdGastSpeichern.TabIndex = 1;
+            this.CmdGastSpeichern.Text = "Änderungen speichern";
+            this.CmdGastSpeichern.UseVisualStyleBackColor = true;
+            this.CmdGastSpeichern.Click += new System.EventHandler(this.CmdGastSpeichern_Click);
             // 
             // CmdGastEntfernen
             // 
@@ -85,6 +86,7 @@ namespace Hotelsoftware
             this.CmdGastEntfernen.TabIndex = 2;
             this.CmdGastEntfernen.Text = "Entfernen";
             this.CmdGastEntfernen.UseVisualStyleBackColor = true;
+            this.CmdGastEntfernen.Click += new System.EventHandler(this.CmdGastEntfernen_Click);
             // 
             // LbGaeste
             // 
@@ -94,11 +96,12 @@ namespace Hotelsoftware
             this.LbGaeste.Name = "LbGaeste";
             this.LbGaeste.Size = new System.Drawing.Size(303, 349);
             this.LbGaeste.TabIndex = 3;
+            this.LbGaeste.SelectedIndexChanged += new System.EventHandler(this.LbGaeste_SelectedIndexChanged);
             // 
             // LblVorname
             // 
             this.LblVorname.AutoSize = true;
-            this.LblVorname.Location = new System.Drawing.Point(332, 14);
+            this.LblVorname.Location = new System.Drawing.Point(331, 56);
             this.LblVorname.Name = "LblVorname";
             this.LblVorname.Size = new System.Drawing.Size(54, 15);
             this.LblVorname.TabIndex = 4;
@@ -106,7 +109,7 @@ namespace Hotelsoftware
             // 
             // TbVorname
             // 
-            this.TbVorname.Location = new System.Drawing.Point(331, 33);
+            this.TbVorname.Location = new System.Drawing.Point(331, 77);
             this.TbVorname.Name = "TbVorname";
             this.TbVorname.Size = new System.Drawing.Size(331, 23);
             this.TbVorname.TabIndex = 5;
@@ -114,7 +117,7 @@ namespace Hotelsoftware
             // LblNachname
             // 
             this.LblNachname.AutoSize = true;
-            this.LblNachname.Location = new System.Drawing.Point(331, 59);
+            this.LblNachname.Location = new System.Drawing.Point(331, 12);
             this.LblNachname.Name = "LblNachname";
             this.LblNachname.Size = new System.Drawing.Size(65, 15);
             this.LblNachname.TabIndex = 6;
@@ -122,10 +125,11 @@ namespace Hotelsoftware
             // 
             // TbNachname
             // 
-            this.TbNachname.Location = new System.Drawing.Point(332, 77);
+            this.TbNachname.Location = new System.Drawing.Point(331, 30);
             this.TbNachname.Name = "TbNachname";
             this.TbNachname.Size = new System.Drawing.Size(330, 23);
             this.TbNachname.TabIndex = 7;
+            this.TbNachname.TextChanged += new System.EventHandler(this.TbNachname_TextChanged);
             // 
             // LblGeburtsdatum
             // 
@@ -233,6 +237,7 @@ namespace Hotelsoftware
             this.CmdFirmaAuswaehlen.TabIndex = 20;
             this.CmdFirmaAuswaehlen.Text = "...";
             this.CmdFirmaAuswaehlen.UseVisualStyleBackColor = true;
+            this.CmdFirmaAuswaehlen.Click += new System.EventHandler(this.CmdFirmaAuswaehlen_Click);
             // 
             // CmdGastSuchen
             // 
@@ -260,7 +265,7 @@ namespace Hotelsoftware
             this.TbHausnummer.Size = new System.Drawing.Size(80, 23);
             this.TbHausnummer.TabIndex = 23;
             // 
-            // Gaestedatei
+            // Gaestekartei
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -287,10 +292,10 @@ namespace Hotelsoftware
             this.Controls.Add(this.LblVorname);
             this.Controls.Add(this.LbGaeste);
             this.Controls.Add(this.CmdGastEntfernen);
-            this.Controls.Add(this.CmdGastBearbeiten);
-            this.Controls.Add(this.CmdGastHinzufuegen);
-            this.Name = "Gaestedatei";
-            this.Text = "Gästedatei";
+            this.Controls.Add(this.CmdGastSpeichern);
+            this.Controls.Add(this.CmdGastNeuHinzufuegen);
+            this.Name = "Gaestekartei";
+            this.Text = "Gästekartei";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -298,8 +303,8 @@ namespace Hotelsoftware
 
         #endregion
 
-        private System.Windows.Forms.Button CmdGastHinzufuegen;
-        private System.Windows.Forms.Button CmdGastBearbeiten;
+        private System.Windows.Forms.Button CmdGastNeuHinzufuegen;
+        private System.Windows.Forms.Button CmdGastSpeichern;
         private System.Windows.Forms.Button CmdGastEntfernen;
         private System.Windows.Forms.ListBox LbGaeste;
         private System.Windows.Forms.Label LblVorname;

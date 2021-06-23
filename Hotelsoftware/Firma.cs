@@ -9,13 +9,13 @@ namespace Hotelsoftware
     public class Firma
     {
         // Attribute nach der Definition der Datenbank
-        public long f_id { get; }
-        public string f_bezeichnung { get; }
-        public string f_strasse { get; }
-        public string f_hausnummer { get; }
-        public string f_postleitzahl { get; }
-        public string f_stadt { get; }
-        public string f_land { get; }
+        public long f_id { get; set; }
+        public string f_bezeichnung { get; set; }
+        public string f_strasse { get; set; }
+        public string f_hausnummer { get; set; }
+        public string f_postleitzahl { get; set; }
+        public string f_stadt { get; set; }
+        public string f_land { get; set; }
 
         // Konstruktor
         public Firma (long f_id, string f_bezeichnung, string f_strasse, string f_hausnummer, string f_postleitzahl, string f_stadt, string f_land)

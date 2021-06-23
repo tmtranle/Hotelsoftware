@@ -18,9 +18,9 @@ namespace Hotelsoftware
         }
 
 
-        private void CmdGaestedatei_Click(object sender, EventArgs e)
+        private void CmdGaestekartei_Click(object sender, EventArgs e)
         {
-            Gaestedatei fenster = new Gaestedatei();
+            Gaestekartei fenster = new Gaestekartei();
             fenster.ShowDialog();
         }
 
@@ -30,9 +30,9 @@ namespace Hotelsoftware
             fenster.ShowDialog();
         }
 
-        private void CmdFirmendatei_Click(object sender, EventArgs e)
+        private void CmdFirmenkartei_Click(object sender, EventArgs e)
         {
-            Firmendatei fenster = new Firmendatei();
+            Firmenkartei fenster = new Firmenkartei();
             fenster.ShowDialog();
         }
     }
