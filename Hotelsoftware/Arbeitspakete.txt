@@ -1,0 +1,18 @@
+Arbeitspakete
+
+1  ERD zeichnen							DONE
+2  Datenbankstruktur festlegen			DONE
+3  Datenbank erstellen					DONE
+4  Testdaten einpflegen					DONE
+5  Klasse Gast							DONE
+6  Klasse Firma							DONE
+7  Graphische Oberfläche Hauptfenster:
+   Firmenkartei, Gästekartei Button		DONE
+8  Graphische Oberfläche Firmenkartei	DONE
+9  Graphische Oberfläche Gästekartei	DONE
+10 Funktionen Firmenkartei 				DONE
+11 Funktionen Gästekartei 				TODO: Funktion GastNeuHinzufuegen und GastBearbeiten
+12 Klasse Zimmer						DONE
+13 Klasse Reservierung					DONE
+14 Graphische Oberfläche Hauptfenster:
+	Zimmer, Reservierung Button 		TODO

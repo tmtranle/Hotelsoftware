@@ -146,8 +146,59 @@ namespace Hotelsoftware
 
         private void CmdGastSpeichern_Click(object sender, EventArgs e)
         {
-
+            //GastSpeichern();
         }
+
+        //public void GastSpeichern()
+        //{
+        //    int anzahl; // für die Anzeige, wenn Eintrag bearbeitet werden konnte
+
+        //    // Index für ausgewählte Firma definieren zum bearbeiten
+        //    int bearbeitenIndex = LbGaeste.SelectedIndex;
+        //    if (bearbeitenIndex < 0 || bearbeitenIndex >= alleGaeste.Count)
+        //    {
+        //        return;
+        //    }
+        //    Gast zuBearbeiten = alleGaeste[bearbeitenIndex];
+
+        //    string g_vorname = TbVorname.Text;
+        //    string g_nachname = TbNachname.Text;
+        //    DateTime g_geburtsdatum = dateTimePickerGeburtsdatum.Value;
+        //    string g_strasse = TbStrasse.Text;
+        //    string g_hausnummer = TbHausnummer.Text;
+        //    string g_postleitzahl = TbPostleitzahl.Text;
+        //    string g_stadt = TbStadt.Text;
+        //    string g_land = TbLand.Text;
+        //    // long? f_id = ;
+
+        //    // Server kontaktieren
+        //    conn.Open();
+        //    MySqlCommand cmd = conn.CreateCommand();
+
+        //    // TODO SQL Abfrage in IntelliJ schreiben
+        //    cmd.CommandText = "UPDATE gast SET f_bezeichnung = @f_bezeichnung" +
+        //        ", f_strasse = @f_strasse " +
+        //        ", f_hausnummer = @f_hausnummer " +
+        //        ", f_postleitzahl = @f_postleitzahl " +
+        //        ", f_stadt = @f_stadt " +
+        //        ", f_land = @f_land " +
+        //        "WHERE f_id = " + zuBearbeiten.f_id;
+
+        //    cmd.Parameters.AddWithValue("f_bezeichnung", f_bezeichnung);
+        //    cmd.Parameters.AddWithValue("f_strasse", f_strasse);
+        //    cmd.Parameters.AddWithValue("f_hausnummer", f_hausnummer);
+        //    cmd.Parameters.AddWithValue("f_postleitzahl", f_postleitzahl);
+        //    cmd.Parameters.AddWithValue("f_stadt", f_stadt);
+        //    cmd.Parameters.AddWithValue("f_land", f_land);
+        //    cmd.Prepare();
+        //    anzahl = cmd.ExecuteNonQuery();
+        //    if (anzahl > 0)
+        //    {
+        //        MessageBox.Show("Änderungen gespeichert");
+        //    }
+        //    // Serververbindung beenden
+        //    conn.Close();
+        //}
 
         private void CmdGastEntfernen_Click(object sender, EventArgs e)
         {

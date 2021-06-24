@@ -35,8 +35,17 @@ Funktion Firma bearbeiten							ab 09:00	bis	09:30	0,50 h
 Funktion Firma suchen								ab 09:30	bis 10:00	0,50 h
 Pause												ab 10:00 	bis 10:30
 Funktion Firma Suche zurücksetzen und Tb leeren		ab 10:30	bis 11:00	0,50 h
-Funktiion Gast suchen und Suche zurücksetzen 		ab 11:00	bis 11:45	0,75 h
-Funktion Gast neu hinzufügen 						ab 11:45	bis 12:00	0,25 h
+Funktion Gast suchen und Suche zurücksetzen 		ab 11:00	bis 11:45	0,75 h
+Funktion Gast entfernen 							ab 11:45	bis 12:00	0,25 h
 Pause 												ab 12:00 	bis 13:00
 Kultur												ab 13:00	bis 14:00
+
+24.06.2021
+Klasse Zimmer, Reservierung erzeugt					ab 08:15 	bis 08:45	0,50 h
+Fenster Zimmerplan erzeugt mit DataGridViewZimmer	ab 08:45	bis 09:00	0,25 h
+Tutorial auf YouTube geschaut						ab 09:00	bis 09:30	0,50 h
+Buttons im Zimmerplan erstellt						ab 09:30	bis 09:45	0,25 h
+Pause												ab 09:45	bis 10:30	
+Funktion ZimmerLaden für DataGridViewZimmer			ab 10:30	bis 11:15	0,75 h
+
 

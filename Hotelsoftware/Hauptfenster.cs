@@ -35,5 +35,11 @@ namespace Hotelsoftware
             Firmenkartei fenster = new Firmenkartei();
             fenster.ShowDialog();
         }
+
+        private void CmdZimmerplan_Click(object sender, EventArgs e)
+        {
+            Zimmerplan fenster = new Zimmerplan();
+            fenster.ShowDialog();
+        }
     }
 }

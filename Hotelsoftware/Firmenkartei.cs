@@ -15,7 +15,6 @@ namespace Hotelsoftware
     public partial class Firmenkartei : Form
     {
         public List<Firma> alleFirmen = new List<Firma>();
-        public MySqlConnection conn = new MySqlConnection("Server=localhost;UID=root;PWD=;DATABASE=HotelsoftwareDB");
 
         public void FirmaHinzufuegen(Firma firma)
         {
@@ -28,7 +27,8 @@ namespace Hotelsoftware
             InitializeComponent();
             FirmenLaden();
         }
-
+        
+        public MySqlConnection conn = new MySqlConnection("Server=localhost;UID=root;PWD=;DATABASE=HotelsoftwareDB");
         public void FirmenLaden()
         {
             // Server kontaktieren
@@ -197,16 +197,6 @@ namespace Hotelsoftware
             string f_stadt = TbStadt.Text;
             string f_land = TbLand.Text;
 
-            //HELP So nicht
-            TbFirmenbezeichnung.Text = zuBearbeiten.f_bezeichnung;
-
-            //So klappt es auch nicht
-            zuBearbeiten.f_strasse = f_strasse;
-            zuBearbeiten.f_hausnummer = f_hausnummer;
-            zuBearbeiten.f_postleitzahl = f_postleitzahl;
-            zuBearbeiten.f_stadt = f_stadt;
-            zuBearbeiten.f_land = f_land;
-
             // Server kontaktieren
             conn.Open();
             MySqlCommand cmd = conn.CreateCommand();
@@ -229,7 +219,7 @@ namespace Hotelsoftware
             anzahl = cmd.ExecuteNonQuery();
             if (anzahl > 0)
             {
-                MessageBox.Show("Eintrag bearbeitet");
+                MessageBox.Show("Änderungen gespeichert");
             }
             // Serververbindung beenden
             conn.Close();
