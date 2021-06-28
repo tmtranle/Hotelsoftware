@@ -72,6 +72,7 @@ namespace Hotelsoftware
             this.CmdAnreiseliste.TabIndex = 0;
             this.CmdAnreiseliste.Text = "Anreiseliste";
             this.CmdAnreiseliste.UseVisualStyleBackColor = true;
+            this.CmdAnreiseliste.Visible = false;
             this.CmdAnreiseliste.Click += new System.EventHandler(this.CmdAnreiseliste_Click);
             // 
             // CmdGaestekartei
@@ -102,6 +103,7 @@ namespace Hotelsoftware
             this.CmdAbreiseliste.TabIndex = 3;
             this.CmdAbreiseliste.Text = "Abreiseliste";
             this.CmdAbreiseliste.UseVisualStyleBackColor = true;
+            this.CmdAbreiseliste.Visible = false;
             // 
             // CmdZimmerplan
             // 

@@ -28,6 +28,7 @@ namespace Hotelsoftware
         }
 
         public MySqlConnection conn = new MySqlConnection("Server=localhost;UID=root;PWD=;DATABASE=HotelsoftwareDB");
+        
         public void GaesteLaden()
         {
             // Server kontaktieren
@@ -59,6 +60,7 @@ namespace Hotelsoftware
         private void CmdGastSuchen_Click(object sender, EventArgs e)
         {
             GastSuchen();
+            CmdGastNeuHinzufuegen.Enabled = true;
         }
 
         private void GastSuchen()
@@ -107,11 +109,10 @@ namespace Hotelsoftware
             conn.Close();
         }
 
-        
-
         private void CmdGastNeuHinzufuegen_Click(object sender, EventArgs e)
         {
             GastNeuHinzufuegen();
+            CmdGastNeuHinzufuegen.Enabled = true;
         }
 
         private void GastNeuHinzufuegen()
@@ -130,7 +131,7 @@ namespace Hotelsoftware
             //string g_land = TbLand.Text;
             //long? f_id = ; 
 
-        }
+       }
 
         private void TbLeeren()
         {
@@ -262,11 +263,27 @@ namespace Hotelsoftware
                 TbLeeren();
             }
         }
-
+        
+        private Firma ausgewaehlteFirma = null;
         private void CmdFirmaAuswaehlen_Click(object sender, EventArgs e)
-        {
+        {    // Parameterübergabe ausgewählte Firma an Gaststamm übergeben und anzeigen
             Firmenkartei fenster = new Firmenkartei();
             fenster.ShowDialog();
+                if (fenster.DialogResult == DialogResult.OK)
+                {
+                    ausgewaehlteFirma = fenster.DoppeltgeklickteFirma;
+                    if (ausgewaehlteFirma == null)
+                    {
+                        // wenn ausgewählte Firma null ist, nichts machen
+                        return;
+                    }
+                    else
+                    {   
+                        // wenn Firma vorhanden ist, im Label den Namen der Firma anzeigen
+                        LblFirmaAnzeigen.Text = ausgewaehlteFirma.f_bezeichnung;
+                    }
+                   
+                }
         }
 
         

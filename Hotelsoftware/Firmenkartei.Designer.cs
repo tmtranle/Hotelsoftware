@@ -73,7 +73,7 @@ namespace Hotelsoftware
             this.TbFirmenbezeichnung.Location = new System.Drawing.Point(318, 31);
             this.TbFirmenbezeichnung.Name = "TbFirmenbezeichnung";
             this.TbFirmenbezeichnung.Size = new System.Drawing.Size(322, 23);
-            this.TbFirmenbezeichnung.TabIndex = 2;
+            this.TbFirmenbezeichnung.TabIndex = 1;
             this.TbFirmenbezeichnung.TextChanged += new System.EventHandler(this.TbFirmenbezeichnung_TextChanged);
             // 
             // LblStrasse
@@ -90,7 +90,7 @@ namespace Hotelsoftware
             this.TbStrasse.Location = new System.Drawing.Point(318, 80);
             this.TbStrasse.Name = "TbStrasse";
             this.TbStrasse.Size = new System.Drawing.Size(223, 23);
-            this.TbStrasse.TabIndex = 4;
+            this.TbStrasse.TabIndex = 2;
             // 
             // LblPostleitzahl
             // 
@@ -106,7 +106,7 @@ namespace Hotelsoftware
             this.TbPostleitzahl.Location = new System.Drawing.Point(318, 129);
             this.TbPostleitzahl.Name = "TbPostleitzahl";
             this.TbPostleitzahl.Size = new System.Drawing.Size(100, 23);
-            this.TbPostleitzahl.TabIndex = 6;
+            this.TbPostleitzahl.TabIndex = 4;
             // 
             // LblStadt
             // 
@@ -122,7 +122,7 @@ namespace Hotelsoftware
             this.TbStadt.Location = new System.Drawing.Point(425, 129);
             this.TbStadt.Name = "TbStadt";
             this.TbStadt.Size = new System.Drawing.Size(215, 23);
-            this.TbStadt.TabIndex = 8;
+            this.TbStadt.TabIndex = 5;
             // 
             // LblLand
             // 
@@ -145,7 +145,7 @@ namespace Hotelsoftware
             this.CmdFirmaSuchen.Location = new System.Drawing.Point(318, 234);
             this.CmdFirmaSuchen.Name = "CmdFirmaSuchen";
             this.CmdFirmaSuchen.Size = new System.Drawing.Size(158, 23);
-            this.CmdFirmaSuchen.TabIndex = 25;
+            this.CmdFirmaSuchen.TabIndex = 6;
             this.CmdFirmaSuchen.Text = "Suchen";
             this.CmdFirmaSuchen.UseVisualStyleBackColor = true;
             this.CmdFirmaSuchen.Click += new System.EventHandler(this.CmdFirmaSuchen_Click);
@@ -156,7 +156,7 @@ namespace Hotelsoftware
             this.CmdFirmaEntfernen.Location = new System.Drawing.Point(482, 263);
             this.CmdFirmaEntfernen.Name = "CmdFirmaEntfernen";
             this.CmdFirmaEntfernen.Size = new System.Drawing.Size(158, 23);
-            this.CmdFirmaEntfernen.TabIndex = 24;
+            this.CmdFirmaEntfernen.TabIndex = 8;
             this.CmdFirmaEntfernen.Text = "Entfernen";
             this.CmdFirmaEntfernen.UseVisualStyleBackColor = true;
             this.CmdFirmaEntfernen.Click += new System.EventHandler(this.CmdFirmaEntfernen_Click);
@@ -167,7 +167,7 @@ namespace Hotelsoftware
             this.CmdFirmaSpeichern.Location = new System.Drawing.Point(316, 263);
             this.CmdFirmaSpeichern.Name = "CmdFirmaSpeichern";
             this.CmdFirmaSpeichern.Size = new System.Drawing.Size(158, 23);
-            this.CmdFirmaSpeichern.TabIndex = 23;
+            this.CmdFirmaSpeichern.TabIndex = 7;
             this.CmdFirmaSpeichern.Text = "Änderungen speichern";
             this.CmdFirmaSpeichern.UseVisualStyleBackColor = true;
             this.CmdFirmaSpeichern.Click += new System.EventHandler(this.CmdFirmaSpeichern_Click);
@@ -178,7 +178,7 @@ namespace Hotelsoftware
             this.CmdFirmaHinzufuegen.Location = new System.Drawing.Point(482, 234);
             this.CmdFirmaHinzufuegen.Name = "CmdFirmaHinzufuegen";
             this.CmdFirmaHinzufuegen.Size = new System.Drawing.Size(158, 23);
-            this.CmdFirmaHinzufuegen.TabIndex = 22;
+            this.CmdFirmaHinzufuegen.TabIndex = 9;
             this.CmdFirmaHinzufuegen.Text = "Neu hinzufügen";
             this.CmdFirmaHinzufuegen.UseVisualStyleBackColor = true;
             this.CmdFirmaHinzufuegen.Click += new System.EventHandler(this.CmdNeuFirmaHinzufuegen_Click);
@@ -197,7 +197,7 @@ namespace Hotelsoftware
             this.TbHausnummer.Location = new System.Drawing.Point(547, 80);
             this.TbHausnummer.Name = "TbHausnummer";
             this.TbHausnummer.Size = new System.Drawing.Size(93, 23);
-            this.TbHausnummer.TabIndex = 27;
+            this.TbHausnummer.TabIndex = 3;
             // 
             // Firmenkartei
             // 

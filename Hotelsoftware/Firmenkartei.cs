@@ -10,15 +10,18 @@ using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
 namespace Hotelsoftware
-{
-   
+{   
     public partial class Firmenkartei : Form
     {
         public List<Firma> alleFirmen = new List<Firma>();
+        
+        public Firma DoppeltgeklickteFirma { get; set; }
 
         public void FirmaHinzufuegen(Firma firma)
         {
+            // zur Liste hinzufügen
             alleFirmen.Add(firma);
+            // zur Model hinzufügen
             LbFirmen.Items.Add(firma.ToString());
         }
 
@@ -57,6 +60,7 @@ namespace Hotelsoftware
         private void CmdFirmaSuchen_Click(object sender, EventArgs e)
         {
             FirmaSuchen();
+            CmdFirmaHinzufuegen.Enabled = true;
         }
 
         private void FirmaSuchen()
@@ -101,8 +105,6 @@ namespace Hotelsoftware
             conn.Close();
 
         }
-
-        
 
         private void CmdNeuFirmaHinzufuegen_Click(object sender, EventArgs e)
         {
@@ -293,8 +295,33 @@ namespace Hotelsoftware
 
         private void LbFirmen_DoubleClick(object sender, EventArgs e)
         {
-            //TODO
             // Doppelklick in die Lb der Firmen soll die ausgewählte Firma als Parameter an den Gast zurückliefern
+            // aus der View den Index holen
+            int auswaehlenIndex = LbFirmen.SelectedIndex;
+            // diesen Index prüfen 
+            if (auswaehlenIndex < 0 || auswaehlenIndex >= alleFirmen.Count)
+            {
+                return;
+            }
+            // die ausgewählte Firma merken
+            DoppeltgeklickteFirma = alleFirmen[auswaehlenIndex];
+
+            //
+            // Server kontaktieren
+            conn.Open();
+
+
+
+            // Verbindung beenden
+            conn.Close();
+
+            // Erfolg anzeigen
+            DialogResult = DialogResult.OK;
+            // Fenster schließen
+            Close();
+
+            // TODO
+            // Möglichkeit auch keine Firma auszuwählen bzw. zu löschen
         }
     }
 }

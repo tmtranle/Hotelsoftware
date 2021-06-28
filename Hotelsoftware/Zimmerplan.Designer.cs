@@ -43,6 +43,7 @@ namespace Hotelsoftware
             this.CmdAnreise = new System.Windows.Forms.Button();
             this.CmdAbreise = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.RBausserBetrieb = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewZimmer)).BeginInit();
             this.SuspendLayout();
             // 
@@ -84,6 +85,7 @@ namespace Hotelsoftware
             this.CmdZimmerplan.TabIndex = 1;
             this.CmdZimmerplan.Text = "Zimmerplan";
             this.CmdZimmerplan.UseVisualStyleBackColor = true;
+            this.CmdZimmerplan.Visible = false;
             // 
             // LblAktuellerStatus
             // 
@@ -116,6 +118,7 @@ namespace Hotelsoftware
             this.RBzuChecken.TabStop = true;
             this.RBzuChecken.Text = "zu checken";
             this.RBzuChecken.UseVisualStyleBackColor = true;
+            this.RBzuChecken.CheckedChanged += new System.EventHandler(this.RBzuChecken_CheckedChanged);
             // 
             // RBdreckig
             // 
@@ -127,6 +130,7 @@ namespace Hotelsoftware
             this.RBdreckig.TabStop = true;
             this.RBdreckig.Text = "dreckig";
             this.RBdreckig.UseVisualStyleBackColor = true;
+            this.RBdreckig.CheckedChanged += new System.EventHandler(this.RBdreckig_CheckedChanged);
             // 
             // RBalle
             // 
@@ -157,6 +161,7 @@ namespace Hotelsoftware
             this.CmdAnreise.TabIndex = 8;
             this.CmdAnreise.Text = "Auf Anreise";
             this.CmdAnreise.UseVisualStyleBackColor = true;
+            this.CmdAnreise.Visible = false;
             // 
             // CmdAbreise
             // 
@@ -166,6 +171,7 @@ namespace Hotelsoftware
             this.CmdAbreise.TabIndex = 9;
             this.CmdAbreise.Text = "Auf Abreise";
             this.CmdAbreise.UseVisualStyleBackColor = true;
+            this.CmdAbreise.Visible = false;
             // 
             // button1
             // 
@@ -175,12 +181,26 @@ namespace Hotelsoftware
             this.button1.TabIndex = 10;
             this.button1.Text = "Auf Abreise";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
+            // 
+            // RBausserBetrieb
+            // 
+            this.RBausserBetrieb.AutoSize = true;
+            this.RBausserBetrieb.Location = new System.Drawing.Point(12, 190);
+            this.RBausserBetrieb.Name = "RBausserBetrieb";
+            this.RBausserBetrieb.Size = new System.Drawing.Size(98, 19);
+            this.RBausserBetrieb.TabIndex = 11;
+            this.RBausserBetrieb.TabStop = true;
+            this.RBausserBetrieb.Text = "ausser Betrieb";
+            this.RBausserBetrieb.UseVisualStyleBackColor = true;
+            this.RBausserBetrieb.CheckedChanged += new System.EventHandler(this.RBausserBetrieb_CheckedChanged);
             // 
             // Zimmerplan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(457, 810);
+            this.Controls.Add(this.RBausserBetrieb);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.CmdAbreise);
             this.Controls.Add(this.CmdAnreise);
@@ -216,5 +236,6 @@ namespace Hotelsoftware
         private System.Windows.Forms.Button CmdAnreise;
         private System.Windows.Forms.Button CmdAbreise;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.RadioButton RBausserBetrieb;
     }
 }
