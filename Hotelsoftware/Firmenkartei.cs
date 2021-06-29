@@ -311,9 +311,6 @@ namespace Hotelsoftware
             DialogResult = DialogResult.OK;
             // Fenster schließen
             Close();
-
-            // TODO
-            // Möglichkeit auch keine Firma auszuwählen bzw. zu löschen
         }
     }
 }

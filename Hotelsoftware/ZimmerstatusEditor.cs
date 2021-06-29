@@ -13,17 +13,9 @@ namespace Hotelsoftware
 {
     public partial class ZimmerstatusEditor : Form
     {
-        // Wenn mit Parameterübergabe vom Fenster Zimmerplan
 
-        //public List<Zimmer> listeZimmerStatusAendern = new List<Zimmer>();
-
-        //public Zimmerplan fenster;
-        //public Zimmer statusZuAendern;
-
-        public ZimmerstatusEditor(/*Zimmerplan fenster, Zimmer statusZuAendern*/)
+        public ZimmerstatusEditor()
         {
-            //this.fenster = fenster;
-            //this.statusZuAendern = statusZuAendern;
             InitializeComponent();
         }
 
@@ -42,8 +34,7 @@ namespace Hotelsoftware
             string eingabe = TbZimmer.Text;
             // string zerschneiden
             String[] teile = eingabe.Split(',');
-            // string in long umwandeln
-
+            
             conn.Open();
             // mit der id, solange den status des zimmers ändern, bis jeder Zimmerstatus geändert wurde
             foreach (string teil in teile)

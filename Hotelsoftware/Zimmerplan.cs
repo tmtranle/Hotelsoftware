@@ -174,7 +174,9 @@ namespace Hotelsoftware
             {
                 RefreshView();
                 ZimmerLaden();
+                RBalle.Checked = true;
             }
+            
             
         }
     }

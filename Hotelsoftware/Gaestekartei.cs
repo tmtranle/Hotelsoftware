@@ -203,13 +203,6 @@ namespace Hotelsoftware
             {
                 MessageBox.Show("Änderungen gespeichert");
             }
-
-            
-
-            
-
-            
-
             // Serververbindung beenden
             conn.Close();
         }
@@ -262,11 +255,10 @@ namespace Hotelsoftware
             TbStadt.Text = zuBearbeiten.g_stadt;
             TbLand.Text = zuBearbeiten.g_land;
             LblFirmaAnzeigen.Text = zuBearbeiten.f_bezeichnung;
-
+            
             // Sobald ein Element der Listbox ausgewählt wird, werden die Buttons Bearbeiten und Entfernen nutzbar
             CmdGastSpeichern.Enabled = true;
             CmdGastEntfernen.Enabled = true;
-            
         }
 
         private void TbNachname_TextChanged(object sender, EventArgs e)
@@ -280,45 +272,89 @@ namespace Hotelsoftware
         
         private Firma ausgewaehlteFirma = null;
         private void CmdFirmaAuswaehlen_Click(object sender, EventArgs e)
-        {    // Parameterübergabe ausgewählte Firma an Gaststamm übergeben und anzeigen
+        {   // Parameterübergabe ausgewählte Firma an Gaststamm übergeben und anzeigen
             Firmenkartei fenster = new Firmenkartei();
             fenster.ShowDialog();
             ausgewaehlteFirma = fenster.DoppeltgeklickteFirma;
             if (fenster.DialogResult == DialogResult.OK)
             {
-                
+                // Verbindung zum Datenbankserver herstellen
+                conn.Open();
+                int index = LbGaeste.SelectedIndex;
+                if (index < 0 || index >= alleGaeste.Count)
+                {
+                    return;
+                }
+                Gast g = alleGaeste[index];
+                MySqlCommand cmd = conn.CreateCommand();
+                cmd.CommandText = "UPDATE gast SET f_id = @f_id WHERE g_id = @g_id";
+                cmd.Parameters.AddWithValue("f_id", ausgewaehlteFirma == null ? null : ausgewaehlteFirma.f_id);
+                cmd.Parameters.AddWithValue("g_id", g.g_id);
+                cmd.Prepare();
+                // für die Anzeige, wenn Eintrag bearbeitet werden konnte
+                int anzahl = cmd.ExecuteNonQuery();
                     
-                    conn.Open();
-                    int index = LbGaeste.SelectedIndex;
-                    if (index < 0 || index >= alleGaeste.Count)
-                    {
-                        return;
-                    }
-                    Gast g = alleGaeste[index];
-                    MySqlCommand cmd = conn.CreateCommand();
-                    cmd.CommandText = "UPDATE gast SET f_id = @f_id WHERE g_id = @g_id";
-                    cmd.Parameters.AddWithValue("f_id", ausgewaehlteFirma == null ? null : ausgewaehlteFirma.f_id);
-                    cmd.Parameters.AddWithValue("g_id", g.g_id);
-                    cmd.Prepare();
-                    // für die Anzeige, wenn Eintrag bearbeitet werden konnte
-                    int anzahl = cmd.ExecuteNonQuery();
-                    
-                    if (anzahl > 0)
-                    {
-                        // Daten im Speicher aktualisieren
-                        g.f_id = ausgewaehlteFirma.f_id;
-                        g.f_bezeichnung = ausgewaehlteFirma.f_bezeichnung;
+                if (anzahl > 0)
+                {
+                    // Daten im Speicher aktualisieren
+                    g.f_id = ausgewaehlteFirma.f_id;
+                    g.f_bezeichnung = ausgewaehlteFirma.f_bezeichnung;
 
-                        // Anzeige aktualisieren
-                        // wenn Firma vorhanden ist, im Label den Namen der Firma anzeigen
-                        LblFirmaAnzeigen.Text = ausgewaehlteFirma.f_bezeichnung;
-                        MessageBox.Show("Firma hinterlegt");
-                    }
-                    conn.Close();
+                    // Anzeige aktualisieren
+                    // wenn Firma vorhanden ist, im Label den Namen der Firma anzeigen
+                    LblFirmaAnzeigen.Text = ausgewaehlteFirma.f_bezeichnung;
+                    MessageBox.Show("Firma hinterlegt");
+                }
+                // Verbindung zum Server trennen
+                conn.Close();
 
-                    
-                
             }
+        }
+
+        private void CmdFirmaAusGaststammEntfernen_Click(object sender, EventArgs e)
+        {
+            // Möglichkeit Firma aus dem Gaststamm zu löschen
+            FirmaAusGaststammEntfernen();
+        }
+
+        private void FirmaAusGaststammEntfernen()
+        { 
+            // Server kontaktieren
+            conn.Open();
+            // Index definieren für ausgewählten Gast
+            int index = LbGaeste.SelectedIndex;
+            if (index < 0 || index >= alleGaeste.Count)
+            {
+                // wenn kein Gast ausgewählt ist, nichts machen
+                return;
+            }
+            // den Gast, der ausgewählt ist an der Stelle, die markiert ist, speichern
+            Gast g = alleGaeste[index];
+            MySqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "UPDATE gast SET f_id = null WHERE g_id = @g_id";
+            cmd.Parameters.AddWithValue("f_id", ausgewaehlteFirma == null ? null : ausgewaehlteFirma.f_id);
+            cmd.Parameters.AddWithValue("g_id", g.g_id);
+            cmd.Prepare();
+            // für die Anzeige, wenn Eintrag bearbeitet werden konnte
+            int anzahl = cmd.ExecuteNonQuery();
+
+            if (anzahl > 0)
+            {
+                // Daten im Speicher aktualisieren
+                // g.f_id = ausgewaehlteFirma.f_id;
+                // g.f_bezeichnung = ausgewaehlteFirma.f_bezeichnung;
+
+                LblFirmaAnzeigen.Text = "";
+
+                // Anzeige aktualisieren
+                // wenn Firma vorhanden ist, im Label den Namen der Firma anzeigen
+                //LblFirmaAnzeigen.Text = ausgewaehlteFirma.f_bezeichnung;
+                MessageBox.Show("Firma aus dem Gaststamm entfernt");
+            }
+
+            // Verbindung zum Server trennen
+            conn.Close();
+
         }
     }
 }
