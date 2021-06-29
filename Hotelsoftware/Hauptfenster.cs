@@ -42,5 +42,11 @@ namespace Hotelsoftware
             Zimmerplan fenster = new Zimmerplan();
             fenster.ShowDialog();
         }
+
+        private void CmdBelegungsplan_Click(object sender, EventArgs e)
+        {
+            Belegungsplan fenster = new Belegungsplan();
+            fenster.ShowDialog();
+        }
     }
 }

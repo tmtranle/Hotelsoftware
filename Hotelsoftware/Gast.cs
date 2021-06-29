@@ -17,10 +17,11 @@ namespace Hotelsoftware
         public string g_postleitzahl { get; }
         public string g_stadt { get; }
         public string g_land { get; }
-        public long? f_id { get; }
+        public long? f_id { get; set; }
+        public string f_bezeichnung { get; set; }
 
         // Konstruktor
-        public Gast (long g_id, string g_vorname, string g_nachname, DateTime g_geburtsdatum, string g_strasse, string g_hausnummer, string g_postleitzahl, string g_stadt, string g_land, long? f_id)
+        public Gast (long g_id, string g_vorname, string g_nachname, DateTime g_geburtsdatum, string g_strasse, string g_hausnummer, string g_postleitzahl, string g_stadt, string g_land, long? f_id, string f_bezeichnung)
         {
             this.g_id = g_id;
             this.g_vorname = g_vorname;
@@ -32,6 +33,7 @@ namespace Hotelsoftware
             this.g_stadt = g_stadt;
             this.g_land = g_land;
             this.f_id = f_id;
+            this.f_bezeichnung = f_bezeichnung;
         }
 
         // Anzeigemethode

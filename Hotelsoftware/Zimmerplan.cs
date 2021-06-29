@@ -165,5 +165,17 @@ namespace Hotelsoftware
 
             conn.Close();
         }
+
+        private void CmdStatusAendern_Click(object sender, EventArgs e)
+        {
+            ZimmerstatusEditor fenster = new ZimmerstatusEditor();
+            fenster.ShowDialog();
+            if (fenster.DialogResult == DialogResult.OK)
+            {
+                RefreshView();
+                ZimmerLaden();
+            }
+            
+        }
     }
 }

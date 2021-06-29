@@ -62,13 +62,14 @@ namespace Hotelsoftware
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuFirmenkartei = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuGaestekartei = new System.Windows.Forms.ToolStripMenuItem();
+            this.CmdBelegungsplan = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // CmdAnreiseliste
             // 
             this.CmdAnreiseliste.Location = new System.Drawing.Point(12, 41);
             this.CmdAnreiseliste.Name = "CmdAnreiseliste";
-            this.CmdAnreiseliste.Size = new System.Drawing.Size(92, 23);
+            this.CmdAnreiseliste.Size = new System.Drawing.Size(100, 23);
             this.CmdAnreiseliste.TabIndex = 0;
             this.CmdAnreiseliste.Text = "Anreiseliste";
             this.CmdAnreiseliste.UseVisualStyleBackColor = true;
@@ -79,7 +80,7 @@ namespace Hotelsoftware
             // 
             this.CmdGaestekartei.Location = new System.Drawing.Point(12, 12);
             this.CmdGaestekartei.Name = "CmdGaestekartei";
-            this.CmdGaestekartei.Size = new System.Drawing.Size(92, 23);
+            this.CmdGaestekartei.Size = new System.Drawing.Size(100, 23);
             this.CmdGaestekartei.TabIndex = 1;
             this.CmdGaestekartei.Text = "Gästekartei";
             this.CmdGaestekartei.UseVisualStyleBackColor = true;
@@ -87,9 +88,9 @@ namespace Hotelsoftware
             // 
             // CmdFirmenkartei
             // 
-            this.CmdFirmenkartei.Location = new System.Drawing.Point(110, 12);
+            this.CmdFirmenkartei.Location = new System.Drawing.Point(118, 12);
             this.CmdFirmenkartei.Name = "CmdFirmenkartei";
-            this.CmdFirmenkartei.Size = new System.Drawing.Size(92, 23);
+            this.CmdFirmenkartei.Size = new System.Drawing.Size(100, 23);
             this.CmdFirmenkartei.TabIndex = 2;
             this.CmdFirmenkartei.Text = "Firmenkartei";
             this.CmdFirmenkartei.UseVisualStyleBackColor = true;
@@ -97,9 +98,9 @@ namespace Hotelsoftware
             // 
             // CmdAbreiseliste
             // 
-            this.CmdAbreiseliste.Location = new System.Drawing.Point(110, 41);
+            this.CmdAbreiseliste.Location = new System.Drawing.Point(118, 41);
             this.CmdAbreiseliste.Name = "CmdAbreiseliste";
-            this.CmdAbreiseliste.Size = new System.Drawing.Size(92, 23);
+            this.CmdAbreiseliste.Size = new System.Drawing.Size(100, 23);
             this.CmdAbreiseliste.TabIndex = 3;
             this.CmdAbreiseliste.Text = "Abreiseliste";
             this.CmdAbreiseliste.UseVisualStyleBackColor = true;
@@ -107,9 +108,9 @@ namespace Hotelsoftware
             // 
             // CmdZimmerplan
             // 
-            this.CmdZimmerplan.Location = new System.Drawing.Point(208, 12);
+            this.CmdZimmerplan.Location = new System.Drawing.Point(224, 12);
             this.CmdZimmerplan.Name = "CmdZimmerplan";
-            this.CmdZimmerplan.Size = new System.Drawing.Size(92, 23);
+            this.CmdZimmerplan.Size = new System.Drawing.Size(100, 23);
             this.CmdZimmerplan.TabIndex = 4;
             this.CmdZimmerplan.Text = "Zimmerplan";
             this.CmdZimmerplan.UseVisualStyleBackColor = true;
@@ -297,11 +298,22 @@ namespace Hotelsoftware
             this.toolStripMenuGaestekartei.Size = new System.Drawing.Size(140, 22);
             this.toolStripMenuGaestekartei.Text = "Gästekartei";
             // 
+            // CmdBelegungsplan
+            // 
+            this.CmdBelegungsplan.Location = new System.Drawing.Point(330, 12);
+            this.CmdBelegungsplan.Name = "CmdBelegungsplan";
+            this.CmdBelegungsplan.Size = new System.Drawing.Size(100, 23);
+            this.CmdBelegungsplan.TabIndex = 5;
+            this.CmdBelegungsplan.Text = "Belegungsplan";
+            this.CmdBelegungsplan.UseVisualStyleBackColor = true;
+            this.CmdBelegungsplan.Click += new System.EventHandler(this.CmdBelegungsplan_Click);
+            // 
             // Hauptfenster
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.CmdBelegungsplan);
             this.Controls.Add(this.CmdZimmerplan);
             this.Controls.Add(this.CmdAbreiseliste);
             this.Controls.Add(this.CmdFirmenkartei);
@@ -347,6 +359,7 @@ namespace Hotelsoftware
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuFirmenkartei;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuGaestekartei;
+        private System.Windows.Forms.Button CmdBelegungsplan;
     }
 }
 

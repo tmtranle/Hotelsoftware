@@ -182,7 +182,7 @@ namespace Hotelsoftware
 
         private void FirmaSpeichern()
         {
-            int anzahl; // für die Anzeige, wenn Eintrag bearbeitet werden konnte
+             
 
             // Index für ausgewählte Firma definieren zum bearbeiten
             int bearbeitenIndex = LbFirmen.SelectedIndex;
@@ -218,7 +218,8 @@ namespace Hotelsoftware
             cmd.Parameters.AddWithValue("f_stadt", f_stadt);
             cmd.Parameters.AddWithValue("f_land", f_land);
             cmd.Prepare();
-            anzahl = cmd.ExecuteNonQuery();
+            // für die Anzeige, wenn Eintrag bearbeitet werden konnte
+            int anzahl = cmd.ExecuteNonQuery(); 
             if (anzahl > 0)
             {
                 MessageBox.Show("Änderungen gespeichert");
@@ -305,15 +306,6 @@ namespace Hotelsoftware
             }
             // die ausgewählte Firma merken
             DoppeltgeklickteFirma = alleFirmen[auswaehlenIndex];
-
-            //
-            // Server kontaktieren
-            conn.Open();
-
-
-
-            // Verbindung beenden
-            conn.Close();
 
             // Erfolg anzeigen
             DialogResult = DialogResult.OK;

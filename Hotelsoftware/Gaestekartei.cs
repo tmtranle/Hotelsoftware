@@ -36,7 +36,11 @@ namespace Hotelsoftware
 
             MySqlCommand cmd = conn.CreateCommand();
 
-            cmd.CommandText = "SELECT g_id, g_vorname, g_nachname, g_geburtsdatum, g_strasse, g_hausnummer,g_postleitzahl, g_stadt, g_land, f_id FROM gast ORDER BY g_nachname";
+            //TODO JOIN MIT FIRMEN
+            cmd.CommandText = "SELECT g_id, g_vorname, g_nachname, g_geburtsdatum, g_strasse, g_hausnummer,g_postleitzahl, g_stadt, g_land, f.f_id, f_bezeichnung " +
+                                    " FROM gast " + 
+                                    " LEFT OUTER JOIN firma f on f.f_id = gast.f_id " +
+                                    " ORDER BY g_nachname ";
 
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
@@ -51,7 +55,8 @@ namespace Hotelsoftware
                 string g_stadt = reader.GetString(7);
                 string g_land = reader.GetString(8);
                 long? f_id = reader.IsDBNull(9) ? null : reader.GetInt64(9);
-                GastHinzufuegen(new Gast(g_id, g_vorname, g_nachname, g_geburtsdatum, g_strasse, g_hausnummer, g_postleitzahl, g_stadt, g_land, f_id));
+                string f_bezeichnung = f_id == null ? null : reader.GetString(10);
+                GastHinzufuegen(new Gast(g_id, g_vorname, g_nachname, g_geburtsdatum, g_strasse, g_hausnummer, g_postleitzahl, g_stadt, g_land, f_id, f_bezeichnung));
             }
             reader.Close();
             conn.Close();
@@ -101,7 +106,8 @@ namespace Hotelsoftware
                 string g_stadt = reader.GetString(7);
                 string g_land = reader.GetString(8);
                 long? f_id = reader.IsDBNull(9) ? null : reader.GetInt64(9);
-                GastHinzufuegen(new Gast(g_id, g_vorname, g_nachname, g_geburtsdatum, g_strasse, g_hausnummer, g_postleitzahl, g_stadt, g_land, f_id));
+                string f_bezeichnung = f_id == null ? null : reader.GetString(10);
+                GastHinzufuegen(new Gast(g_id, g_vorname, g_nachname, g_geburtsdatum, g_strasse, g_hausnummer, g_postleitzahl, g_stadt, g_land, f_id, f_bezeichnung));
             }
 
             reader.Close();         
@@ -150,56 +156,63 @@ namespace Hotelsoftware
             //GastSpeichern();
         }
 
-        //public void GastSpeichern()
-        //{
-        //    int anzahl; // für die Anzeige, wenn Eintrag bearbeitet werden konnte
+        public void GastSpeichern()
+        {
+            int anzahl; // für die Anzeige, wenn Eintrag bearbeitet werden konnte
 
-        //    // Index für ausgewählte Firma definieren zum bearbeiten
-        //    int bearbeitenIndex = LbGaeste.SelectedIndex;
-        //    if (bearbeitenIndex < 0 || bearbeitenIndex >= alleGaeste.Count)
-        //    {
-        //        return;
-        //    }
-        //    Gast zuBearbeiten = alleGaeste[bearbeitenIndex];
+            // Index für ausgewählte Firma definieren zum bearbeiten
+            int bearbeitenIndex = LbGaeste.SelectedIndex;
+            if (bearbeitenIndex < 0 || bearbeitenIndex >= alleGaeste.Count)
+            {
+                return;
+            }
+            Gast zuBearbeiten = alleGaeste[bearbeitenIndex];
 
-        //    string g_vorname = TbVorname.Text;
-        //    string g_nachname = TbNachname.Text;
-        //    DateTime g_geburtsdatum = dateTimePickerGeburtsdatum.Value;
-        //    string g_strasse = TbStrasse.Text;
-        //    string g_hausnummer = TbHausnummer.Text;
-        //    string g_postleitzahl = TbPostleitzahl.Text;
-        //    string g_stadt = TbStadt.Text;
-        //    string g_land = TbLand.Text;
-        //    // long? f_id = ;
+            string g_vorname = TbVorname.Text;
+            string g_nachname = TbNachname.Text;
+            DateTime g_geburtsdatum = dateTimePickerGeburtsdatum.Value;
+            string g_strasse = TbStrasse.Text;
+            string g_hausnummer = TbHausnummer.Text;
+            string g_postleitzahl = TbPostleitzahl.Text;
+            string g_stadt = TbStadt.Text;
+            string g_land = TbLand.Text;
+            
+            // Server kontaktieren
+            conn.Open();
+            MySqlCommand cmd = conn.CreateCommand();
 
-        //    // Server kontaktieren
-        //    conn.Open();
-        //    MySqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "UPDATE gast SET g_vorname = @g_vorname " +
+                " , g_nachname = @g_nachname " +
+                " , g_geburtsdatum = @g_geburtsdatum " +
+                " , g_hausnummer = @g_hausnummer " +
+                " , g_postleitzahl = @g_postleitzahl " +
+                " , g_stadt = @g_stadt " +
+                " , g_land = @g_land " +
+                " WHERE g_id = " + zuBearbeiten.g_id;
 
-        //    // TODO SQL Abfrage in IntelliJ schreiben
-        //    cmd.CommandText = "UPDATE gast SET f_bezeichnung = @f_bezeichnung" +
-        //        ", f_strasse = @f_strasse " +
-        //        ", f_hausnummer = @f_hausnummer " +
-        //        ", f_postleitzahl = @f_postleitzahl " +
-        //        ", f_stadt = @f_stadt " +
-        //        ", f_land = @f_land " +
-        //        "WHERE f_id = " + zuBearbeiten.f_id;
+            cmd.Parameters.AddWithValue("g_vorname", g_vorname);
+            cmd.Parameters.AddWithValue("g_nachname", g_nachname);
+            cmd.Parameters.AddWithValue("g_geburtsdatum", g_geburtsdatum);
+            cmd.Parameters.AddWithValue("g_hausnummer", g_hausnummer);
+            cmd.Parameters.AddWithValue("g_postleitzahl", g_postleitzahl);
+            cmd.Parameters.AddWithValue("g_stadt", g_stadt);
+            cmd.Parameters.AddWithValue("g_land", g_land);
+            cmd.Prepare();
+            anzahl = cmd.ExecuteNonQuery();
+            if (anzahl > 0)
+            {
+                MessageBox.Show("Änderungen gespeichert");
+            }
 
-        //    cmd.Parameters.AddWithValue("f_bezeichnung", f_bezeichnung);
-        //    cmd.Parameters.AddWithValue("f_strasse", f_strasse);
-        //    cmd.Parameters.AddWithValue("f_hausnummer", f_hausnummer);
-        //    cmd.Parameters.AddWithValue("f_postleitzahl", f_postleitzahl);
-        //    cmd.Parameters.AddWithValue("f_stadt", f_stadt);
-        //    cmd.Parameters.AddWithValue("f_land", f_land);
-        //    cmd.Prepare();
-        //    anzahl = cmd.ExecuteNonQuery();
-        //    if (anzahl > 0)
-        //    {
-        //        MessageBox.Show("Änderungen gespeichert");
-        //    }
-        //    // Serververbindung beenden
-        //    conn.Close();
-        //}
+            
+
+            
+
+            
+
+            // Serververbindung beenden
+            conn.Close();
+        }
 
         private void CmdGastEntfernen_Click(object sender, EventArgs e)
         {
@@ -244,10 +257,11 @@ namespace Hotelsoftware
             TbVorname.Text = zuBearbeiten.g_vorname;
             TbNachname.Text = zuBearbeiten.g_nachname;
             TbStrasse.Text = zuBearbeiten.g_strasse;
-            TbHausnummer.Text = zuBearbeiten.g_stadt;
+            TbHausnummer.Text = zuBearbeiten.g_hausnummer;
             TbPostleitzahl.Text = zuBearbeiten.g_postleitzahl;
             TbStadt.Text = zuBearbeiten.g_stadt;
             TbLand.Text = zuBearbeiten.g_land;
+            LblFirmaAnzeigen.Text = zuBearbeiten.f_bezeichnung;
 
             // Sobald ein Element der Listbox ausgewählt wird, werden die Buttons Bearbeiten und Entfernen nutzbar
             CmdGastSpeichern.Enabled = true;
@@ -269,23 +283,42 @@ namespace Hotelsoftware
         {    // Parameterübergabe ausgewählte Firma an Gaststamm übergeben und anzeigen
             Firmenkartei fenster = new Firmenkartei();
             fenster.ShowDialog();
-                if (fenster.DialogResult == DialogResult.OK)
-                {
-                    ausgewaehlteFirma = fenster.DoppeltgeklickteFirma;
-                    if (ausgewaehlteFirma == null)
+            ausgewaehlteFirma = fenster.DoppeltgeklickteFirma;
+            if (fenster.DialogResult == DialogResult.OK)
+            {
+                
+                    
+                    conn.Open();
+                    int index = LbGaeste.SelectedIndex;
+                    if (index < 0 || index >= alleGaeste.Count)
                     {
-                        // wenn ausgewählte Firma null ist, nichts machen
                         return;
                     }
-                    else
-                    {   
+                    Gast g = alleGaeste[index];
+                    MySqlCommand cmd = conn.CreateCommand();
+                    cmd.CommandText = "UPDATE gast SET f_id = @f_id WHERE g_id = @g_id";
+                    cmd.Parameters.AddWithValue("f_id", ausgewaehlteFirma == null ? null : ausgewaehlteFirma.f_id);
+                    cmd.Parameters.AddWithValue("g_id", g.g_id);
+                    cmd.Prepare();
+                    // für die Anzeige, wenn Eintrag bearbeitet werden konnte
+                    int anzahl = cmd.ExecuteNonQuery();
+                    
+                    if (anzahl > 0)
+                    {
+                        // Daten im Speicher aktualisieren
+                        g.f_id = ausgewaehlteFirma.f_id;
+                        g.f_bezeichnung = ausgewaehlteFirma.f_bezeichnung;
+
+                        // Anzeige aktualisieren
                         // wenn Firma vorhanden ist, im Label den Namen der Firma anzeigen
                         LblFirmaAnzeigen.Text = ausgewaehlteFirma.f_bezeichnung;
+                        MessageBox.Show("Firma hinterlegt");
                     }
-                   
-                }
-        }
+                    conn.Close();
 
-        
+                    
+                
+            }
+        }
     }
 }

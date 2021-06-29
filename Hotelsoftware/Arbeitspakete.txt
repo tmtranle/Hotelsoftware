@@ -11,8 +11,10 @@ Arbeitspakete
 8  Graphische Oberfläche Firmenkartei	DONE
 9  Graphische Oberfläche Gästekartei	DONE
 10 Funktionen Firmenkartei 				DONE
-11 Funktionen Gästekartei 				TODO: Funktion GastNeuHinzufuegen und GastBearbeiten
+11 Funktionen Gästekartei 											TODO Funktion GastNeuHinzufuegen und GastBearbeiten
 12 Klasse Zimmer						DONE
 13 Klasse Reservierung					DONE
-14 Graphische Oberfläche Hauptfenster:
-	Zimmer, Reservierung Button 		TODO
+14 Graphische Oberfläche Hauptfenster: 
+   Zimmerplan Button 					DONE
+   Reservierung Button 					DONE
+15 Firma auswählen und in Gaststamm merken  						TODO Datenbank Anbindung
