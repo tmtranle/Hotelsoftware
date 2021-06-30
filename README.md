@@ -10,3 +10,4 @@ Im Rahmen meiner Projektarbeit meines C# Kurses erarbeite ich mir selbstständig
 
 24.06. - 02.07.2021
 - Zimmerplan (Funktionen: Zimmer nach Zimmerstatus filtern) Datenbank gestützt
+- Belegungsplan (Funktionen: Reservierungen nach Status filtern) Datenbank gestützt
