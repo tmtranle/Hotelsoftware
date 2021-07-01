@@ -123,21 +123,75 @@ namespace Hotelsoftware
 
         private void GastNeuHinzufuegen()
         {
-            //TODO Funktion bearbeiten, vorab aber den Doppelklick ausprogrammieren -
-            // dieser soll den long f_id liefern als Parameter
-            //int anzahl; // für die Anzeige, wenn ein Eintrag hinzugefügt werden konnte
 
-            //string g_vorname = TbVorname.Text;
-            //string g_nachname = TbNachname.Text;
-            //DateTime g_geburtsdatum = dateTimePickerGeburtsdatum.Value;
-            //string g_strasse = TbStrasse.Text;
-            //string g_hausnummer = TbHausnummer.Text;
-            //string g_postleitzahl = TbPostleitzahl.Text;
-            //string g_stadt = TbStadt.Text;
-            //string g_land = TbLand.Text;
-            //long? f_id = ; 
+            int anzahl; // für die Anzeige, wenn ein Eintrag hinzugefügt werden konnte
 
-       }
+            string g_vorname = TbVorname.Text;
+            string g_nachname = TbNachname.Text;
+            if (g_nachname.Length == 0)
+            {
+                MessageBox.Show("Nachnamen angeben");
+                return;
+            }
+            DateTime g_geburtsdatum = dateTimePickerGeburtsdatum.Value;
+            string g_strasse = TbStrasse.Text;
+            string g_hausnummer = TbHausnummer.Text;
+            string g_postleitzahl = TbPostleitzahl.Text;
+            string g_stadt = TbStadt.Text;
+            string g_land = TbLand.Text;
+            string f_bezeichnung = LblFirmaAnzeigen.Text;
+            long? f_id = null;
+            if (f_bezeichnung == null)
+            {
+                return;
+            }
+            // TODO 
+            //else
+            //{
+            //  beim neu erstellen eines Gastes, kann man schon Firma auswählen?
+            //}
+
+            // Server kontaktieren
+            conn.Open();
+            MySqlCommand cmd = conn.CreateCommand();
+
+            cmd.CommandText = "INSERT INTO gast (g_vorname, g_nachname, g_geburtsdatum, g_strasse, g_hausnummer, g_postleitzahl, g_stadt, g_land) "
+                + " VALUES(@g_vorname, @g_nachname, @g_geburtsdatum, @g_strasse, @g_hausnummer, @g_postleitzahl, @g_stadt, @g_land) ";
+
+            cmd.Parameters.AddWithValue("g_vorname", g_vorname);
+            cmd.Parameters.AddWithValue("g_nachname", g_nachname);
+            cmd.Parameters.AddWithValue("g_geburtsdatum", g_geburtsdatum);
+            cmd.Parameters.AddWithValue("g_strasse", g_strasse);
+            cmd.Parameters.AddWithValue("g_hausnummer", g_hausnummer);
+            cmd.Parameters.AddWithValue("g_postleitzahl", g_postleitzahl);
+            cmd.Parameters.AddWithValue("g_stadt", g_stadt);
+            cmd.Parameters.AddWithValue("g_land", g_land);
+            cmd.Prepare();
+            anzahl = cmd.ExecuteNonQuery();
+            if (anzahl > 0)
+            {
+                MessageBox.Show("Gast hinzugefügt");
+            }
+
+            // ID einholen
+            long g_id = cmd.LastInsertedId;
+            conn.Close();
+
+            // zur Liste hinzufügen 
+            Gast hinzuzufuegen = new Gast(g_id, g_vorname, g_nachname, g_geburtsdatum, g_strasse, g_hausnummer, g_postleitzahl, g_stadt, g_land, f_id, f_bezeichnung);
+
+            // Listbox aktualisieren
+            GastHinzufuegen(hinzuzufuegen);
+
+            // Textboxen leeren
+            TbLeeren();
+
+            // Serververbindung beenden
+            conn.Close();
+
+           
+
+        }
 
         private void TbLeeren()
         {

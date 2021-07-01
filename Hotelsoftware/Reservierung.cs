@@ -10,25 +10,32 @@ namespace Hotelsoftware
     {
         // Attribute nach der Definition der Datenbank
         public long r_id { get; }
-        public DateTime checkIn { get; }
-        public DateTime checkOut { get; }
-        public long g_id { get; }
-        public long z_id { get; }
+        public DateTime checkIn { get; set; }
+        public DateTime checkOut { get; set; }
+        public long g_id { get; set; }
+        public long z_id { get; set; }
+        public string r_status { get; set; }
+        public string g_nachname { get; set; }
+        public string g_vorname { get; set; }
+
 
         // Konstruktor
-        Reservierung(long r_id, DateTime checkIn, DateTime checkOut, long g_id, long z_id)
+        public Reservierung(long r_id, DateTime checkIn, DateTime checkOut, long g_id, long z_id, string r_status, string g_nachname, string g_vorname)
         {
             this.r_id = r_id;
             this.checkIn = checkIn;
             this.checkOut = checkOut;
             this.g_id = g_id;
             this.z_id = z_id;
+            this.r_status = r_status;
+            this.g_nachname = g_nachname;
+            this.g_vorname = g_vorname;
         }
 
         // Anzeigemethode
         public override string ToString()
         {
-            return "# " + z_id + " "+ g_id  + " " + checkIn + " " + checkOut;
+            return "# " + z_id + " "+ g_nachname + " " + checkIn + " " + checkOut;
         }
     }
 }

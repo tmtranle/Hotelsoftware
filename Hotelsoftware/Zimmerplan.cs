@@ -36,12 +36,42 @@ namespace Hotelsoftware
 
         private void ZimmerLaden()
         {
-            conn.Open();
+            string filter;
+            if (RbAusserBetrieb.Checked == true)
+            {
+                filter = RbAusserBetrieb.Text;
+            }
+            else if (RbSauber.Checked == true)
+            {
+                filter = RbSauber.Text;
+            }
+            else if (RbZuChecken.Checked == true)
+            {
+                filter = RbZuChecken.Text;
+            }
+            else if (RbDreckig.Checked == true)
+            {
+                filter = RbDreckig.Text;
+            }
+            else
+            {
+                filter = RbSauber.Text;
+            }
 
+            conn.Open();
             MySqlCommand cmd = conn.CreateCommand();
 
-            cmd.CommandText = "SELECT z_id, z_kategorie, z_status FROM zimmer";
-            
+            if (RbAlle.Checked == true)
+            {
+                cmd.CommandText = "SELECT z_id, z_kategorie, z_status FROM zimmer ORDER BY z_id";
+            }
+            else
+            {
+                cmd.CommandText = "SELECT z_id, z_kategorie, z_status FROM zimmer WHERE z_status = @z_status ORDER BY z_id";
+                cmd.Parameters.AddWithValue("z_status", filter);
+                cmd.Prepare();
+            }
+
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
@@ -63,109 +93,6 @@ namespace Hotelsoftware
             dataGridViewZimmer.Rows.Clear();
         }
 
-        private void RBalle_CheckedChanged(object sender, EventArgs e)
-        {
-            RefreshView();
-            ZimmerLaden();
-        }
-
-        private void RBsauber_CheckedChanged(object sender, EventArgs e)
-        {
-            RefreshView();
-
-            conn.Open();
-
-            MySqlCommand cmd = conn.CreateCommand();
-
-            cmd.CommandText = "SELECT z_id, z_kategorie, z_status FROM zimmer WHERE z_status = 'sauber' " ;
-
-            MySqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                long z_id = reader.GetInt64(0);
-                string z_kategorie = reader.GetString(1);
-                string z_status = reader.GetString(2);
-                
-                ZimmerHinzufuegen(new Zimmer(z_id, z_kategorie, z_status));
-            }
-            reader.Close();
-
-            conn.Close();
-
-        }
-
-        private void RBzuChecken_CheckedChanged(object sender, EventArgs e)
-        {
-            RefreshView();
-
-            conn.Open();
-
-            MySqlCommand cmd = conn.CreateCommand();
-
-            cmd.CommandText = "SELECT z_id, z_kategorie, z_status FROM zimmer WHERE z_status = 'checken' ";
-
-            MySqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                long z_id = reader.GetInt64(0);
-                string z_kategorie = reader.GetString(1);
-                string z_status = reader.GetString(2);
-
-                ZimmerHinzufuegen(new Zimmer(z_id, z_kategorie, z_status));
-            }
-            reader.Close();
-
-            conn.Close();
-        }
-
-        private void RBdreckig_CheckedChanged(object sender, EventArgs e)
-        {
-            RefreshView();
-
-            conn.Open();
-
-            MySqlCommand cmd = conn.CreateCommand();
-
-            cmd.CommandText = "SELECT z_id, z_kategorie, z_status FROM zimmer WHERE z_status = 'dreckig' ";
-
-            MySqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                long z_id = reader.GetInt64(0);
-                string z_kategorie = reader.GetString(1);
-                string z_status = reader.GetString(2);
-
-                ZimmerHinzufuegen(new Zimmer(z_id, z_kategorie, z_status));
-            }
-            reader.Close();
-
-            conn.Close();
-        }
-
-        private void RBausserBetrieb_CheckedChanged(object sender, EventArgs e)
-        {
-            RefreshView();
-
-            conn.Open();
-
-            MySqlCommand cmd = conn.CreateCommand();
-
-            cmd.CommandText = "SELECT z_id, z_kategorie, z_status FROM zimmer WHERE z_status = 'ausser Betrieb' ";
-
-            MySqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                long z_id = reader.GetInt64(0);
-                string z_kategorie = reader.GetString(1);
-                string z_status = reader.GetString(2);
-
-                ZimmerHinzufuegen(new Zimmer(z_id, z_kategorie, z_status));
-            }
-            reader.Close();
-
-            conn.Close();
-        }
-
         private void CmdStatusAendern_Click(object sender, EventArgs e)
         {
             ZimmerstatusEditor fenster = new ZimmerstatusEditor();
@@ -174,10 +101,39 @@ namespace Hotelsoftware
             {
                 RefreshView();
                 ZimmerLaden();
-                RBalle.Checked = true;
+                RbAlle.Checked = true;
             }
-            
-            
         }
+
+        private void RbAlle_CheckedChanged(object sender, EventArgs e)
+        {
+            RefreshView();
+            ZimmerLaden();
+        }
+
+        private void RbSauber_CheckedChanged(object sender, EventArgs e)
+        {
+            RefreshView();
+            ZimmerLaden();
+        }
+
+        private void RbZuChecken_CheckedChanged(object sender, EventArgs e)
+        {
+            RefreshView();
+            ZimmerLaden();
+        }
+
+        private void RbDreckig_CheckedChanged(object sender, EventArgs e)
+        {
+            RefreshView();
+            ZimmerLaden();
+        }
+
+        private void RbAusserBetrieb_CheckedChanged(object sender, EventArgs e)
+        {
+            RefreshView();
+            ZimmerLaden();
+        }
+       
     }
 }
