@@ -30,10 +30,8 @@ namespace Hotelsoftware
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Hauptfenster));
-            this.CmdAnreiseliste = new System.Windows.Forms.Button();
             this.CmdGaestekartei = new System.Windows.Forms.Button();
             this.CmdFirmenkartei = new System.Windows.Forms.Button();
-            this.CmdAbreiseliste = new System.Windows.Forms.Button();
             this.CmdZimmerplan = new System.Windows.Forms.Button();
             this.contentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.indexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -65,17 +63,6 @@ namespace Hotelsoftware
             this.CmdBelegungsplan = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // CmdAnreiseliste
-            // 
-            this.CmdAnreiseliste.Location = new System.Drawing.Point(12, 41);
-            this.CmdAnreiseliste.Name = "CmdAnreiseliste";
-            this.CmdAnreiseliste.Size = new System.Drawing.Size(100, 23);
-            this.CmdAnreiseliste.TabIndex = 0;
-            this.CmdAnreiseliste.Text = "Anreiseliste";
-            this.CmdAnreiseliste.UseVisualStyleBackColor = true;
-            this.CmdAnreiseliste.Visible = false;
-            this.CmdAnreiseliste.Click += new System.EventHandler(this.CmdAnreiseliste_Click);
-            // 
             // CmdGaestekartei
             // 
             this.CmdGaestekartei.Location = new System.Drawing.Point(12, 12);
@@ -95,16 +82,6 @@ namespace Hotelsoftware
             this.CmdFirmenkartei.Text = "Firmenkartei";
             this.CmdFirmenkartei.UseVisualStyleBackColor = true;
             this.CmdFirmenkartei.Click += new System.EventHandler(this.CmdFirmenkartei_Click);
-            // 
-            // CmdAbreiseliste
-            // 
-            this.CmdAbreiseliste.Location = new System.Drawing.Point(118, 41);
-            this.CmdAbreiseliste.Name = "CmdAbreiseliste";
-            this.CmdAbreiseliste.Size = new System.Drawing.Size(100, 23);
-            this.CmdAbreiseliste.TabIndex = 3;
-            this.CmdAbreiseliste.Text = "Abreiseliste";
-            this.CmdAbreiseliste.UseVisualStyleBackColor = true;
-            this.CmdAbreiseliste.Visible = false;
             // 
             // CmdZimmerplan
             // 
@@ -315,10 +292,8 @@ namespace Hotelsoftware
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.CmdBelegungsplan);
             this.Controls.Add(this.CmdZimmerplan);
-            this.Controls.Add(this.CmdAbreiseliste);
             this.Controls.Add(this.CmdFirmenkartei);
             this.Controls.Add(this.CmdGaestekartei);
-            this.Controls.Add(this.CmdAnreiseliste);
             this.Name = "Hauptfenster";
             this.Text = "Property Management System";
             this.ResumeLayout(false);
@@ -326,11 +301,8 @@ namespace Hotelsoftware
         }
 
         #endregion
-
-        private System.Windows.Forms.Button CmdAnreiseliste;
         private System.Windows.Forms.Button CmdGaestekartei;
         private System.Windows.Forms.Button CmdFirmenkartei;
-        private System.Windows.Forms.Button CmdAbreiseliste;
         private System.Windows.Forms.Button CmdZimmerplan;
         private System.Windows.Forms.ToolStripMenuItem contentsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem indexToolStripMenuItem;

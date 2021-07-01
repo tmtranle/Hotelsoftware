@@ -33,10 +33,8 @@ namespace Hotelsoftware
         {
             // Server kontaktieren
             conn.Open();
-
             MySqlCommand cmd = conn.CreateCommand();
 
-            //TODO JOIN MIT FIRMEN
             cmd.CommandText = "SELECT g_id, g_vorname, g_nachname, g_geburtsdatum, g_strasse, g_hausnummer,g_postleitzahl, g_stadt, g_land, f.f_id, f_bezeichnung " +
                                     " FROM gast " + 
                                     " LEFT OUTER JOIN firma f on f.f_id = gast.f_id " +
@@ -71,7 +69,6 @@ namespace Hotelsoftware
         private void GastSuchen()
         { 
             // Nutzereingaben erhalten
-            
             string g_nachname = TbNachname.Text;
             if (g_nachname.Length == 0)
             {
@@ -86,9 +83,7 @@ namespace Hotelsoftware
             MySqlCommand cmd = conn.CreateCommand();
             cmd.CommandText = "SELECT g_id, g_vorname, g_nachname, g_geburtsdatum, g_strasse, g_hausnummer,g_postleitzahl, g_stadt, g_land, f_id " +
                 " FROM gast WHERE g_nachname like @g_nachname ORDER BY g_nachname";
-
             cmd.Parameters.AddWithValue("g_nachname", "%" + g_nachname + "%");
-
             cmd.Prepare();
             MySqlDataReader reader = cmd.ExecuteReader();
             LbGaeste.Items.Clear();
@@ -109,9 +104,7 @@ namespace Hotelsoftware
                 string f_bezeichnung = f_id == null ? null : reader.GetString(10);
                 GastHinzufuegen(new Gast(g_id, g_vorname, g_nachname, g_geburtsdatum, g_strasse, g_hausnummer, g_postleitzahl, g_stadt, g_land, f_id, f_bezeichnung));
             }
-
-            reader.Close();         
-            
+            reader.Close();   
             conn.Close();
         }
 
@@ -375,6 +368,7 @@ namespace Hotelsoftware
         { 
             // Server kontaktieren
             conn.Open();
+
             // Index definieren für ausgewählten Gast
             int index = LbGaeste.SelectedIndex;
             if (index < 0 || index >= alleGaeste.Count)
@@ -382,6 +376,7 @@ namespace Hotelsoftware
                 // wenn kein Gast ausgewählt ist, nichts machen
                 return;
             }
+
             // den Gast, der ausgewählt ist an der Stelle, die markiert ist, speichern
             Gast g = alleGaeste[index];
             MySqlCommand cmd = conn.CreateCommand();
@@ -389,26 +384,22 @@ namespace Hotelsoftware
             cmd.Parameters.AddWithValue("f_id", ausgewaehlteFirma == null ? null : ausgewaehlteFirma.f_id);
             cmd.Parameters.AddWithValue("g_id", g.g_id);
             cmd.Prepare();
+
             // für die Anzeige, wenn Eintrag bearbeitet werden konnte
             int anzahl = cmd.ExecuteNonQuery();
-
             if (anzahl > 0)
             {
-                // Daten im Speicher aktualisieren
-                // g.f_id = ausgewaehlteFirma.f_id;
-                // g.f_bezeichnung = ausgewaehlteFirma.f_bezeichnung;
-
                 LblFirmaAnzeigen.Text = "";
-
-                // Anzeige aktualisieren
-                // wenn Firma vorhanden ist, im Label den Namen der Firma anzeigen
-                //LblFirmaAnzeigen.Text = ausgewaehlteFirma.f_bezeichnung;
                 MessageBox.Show("Firma aus dem Gaststamm entfernt");
             }
 
             // Verbindung zum Server trennen
             conn.Close();
+        }
 
+        private void Gaestekartei_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

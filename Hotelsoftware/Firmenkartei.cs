@@ -312,5 +312,10 @@ namespace Hotelsoftware
             // Fenster schließen
             Close();
         }
+
+        private void Firmenkartei_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

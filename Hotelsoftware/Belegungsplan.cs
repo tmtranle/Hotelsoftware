@@ -41,31 +41,72 @@ namespace Hotelsoftware
        
         private void ReservierungenLaden()
         {
-            // HIER?
-            DateTime eingestelltesDatum = dateTimePickerBelegunsplan.Value;
+            // TODO nach dem ausgewählten Datum filtern
+            DateTime datum = dateTimePickerBelegunsplan.Value;
+            // TODO nach dem ausgewählten Status filtern 
+            string filter;
+            if (RbGarantiert.Checked == true)
+            {
+                filter = RbGarantiert.Text;
+            }
+            else if (RbNoShow.Checked == true)
+            {
+                filter = RbNoShow.Text;
+            }
+            else if (RbOption.Checked == true)
+            {
+                filter = RbOption.Text;
+            }
+            else
+            {
+                filter = RbStorniert.Text;
+            }
 
+            // Verbindung zum Datenbankserver aufbauen
             conn.Open();
             MySqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = "SELECT r.r_id, r.checkIn, r.checkOut, g.g_id, z.z_id, r.r_status, g.g_nachname, g.g_vorname " +
-                                    " FROM reservierung r INNER JOIN gast g ON r.g_id = g.g_id INNER JOIN zimmer z " +
-                                    " ON r.z_id = z.z_id " +  /* eingestelltesDatum +
-                                    " WHERE checkIn = " + */
-                                    " ORDER BY z_id ";
+
+            // TODO HERAUSFINDEN; WARUM DAS DATUM NICHT GEFILTERT WIRD  
+
+            if (RbAlle.Checked == true)
+            {
+                cmd.CommandText = "SELECT r_id, z_id, g.g_id, g_nachname, g_vorname, checkIn, checkOut, r_status " +
+                                       " FROM reservierung " +
+                                       " LEFT JOIN gast g on g.g_id = reservierung.g_id " +
+                                       // " WHERE checkIn = @checkIn " +
+                                       " ORDER BY z_id";
+                //cmd.Parameters.AddWithValue("checkIn", datum);
+                //cmd.Prepare();
+            }
+            else
+            {
+                cmd.CommandText = "SELECT r_id, z_id, g.g_id, g_nachname, g_vorname, checkIn, checkOut, r_status " +
+                                        " FROM reservierung " +
+                                        " LEFT JOIN gast g on g.g_id = reservierung.g_id " +
+                                        " WHERE r_status = @r_status " +
+                                        //" AND checkIn = @checkIn " +
+                                        " ORDER BY z_id";
+                cmd.Parameters.AddWithValue("r_status", filter);
+                //cmd.Parameters.AddWithValue("checkIn", datum);
+                cmd.Prepare();
+            }
 
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
                 long r_id = reader.GetInt64(0);
-                DateTime checkIn = reader.GetDateTime(1);
-                DateTime checkOut = reader.GetDateTime(2);
-                long g_id = reader.GetInt64(3);
-                long z_id = reader.GetInt64(4);
-                string r_status = reader.GetString(5);
-                string g_nachname = reader.GetString(6);
-                string g_vorname = reader.GetString(7);
-                ReservierungenHinzufuegen(new Reservierung(r_id, checkIn, checkOut, g_id, z_id, r_status, g_nachname, g_vorname));
+                long z_id = reader.GetInt64(1);
+                long g_id = reader.GetInt64(2);
+                string g_nachname = reader.GetString(3);
+                string g_vorname = reader.GetString(4);
+                DateTime checkIn = reader.GetDateTime(5);
+                DateTime checkOut = reader.GetDateTime(6);
+                string r_status = reader.GetString(7);
+                
+                ReservierungenHinzufuegen(new Reservierung(r_id, z_id, g_id, g_nachname, g_vorname, checkIn, checkOut, r_status));
             }
             reader.Close();
+            // Verbindung zum Datenbankserver trennen
             conn.Close();
         }
 
@@ -82,60 +123,29 @@ namespace Hotelsoftware
             RefreshView();
             ReservierungenLaden();
         }
+
         private void RbGarantiert_CheckedChanged(object sender, EventArgs e)
         {
-            FilterAnwenden();
+            RefreshView();
+            ReservierungenLaden();
         }
+
         private void RbNoShow_CheckedChanged(object sender, EventArgs e)
         {
-            FilterAnwenden();
+            RefreshView();
+            ReservierungenLaden();
         }
+
         private void RbOption_CheckedChanged(object sender, EventArgs e)
         {
-            FilterAnwenden();
+            RefreshView();
+            ReservierungenLaden();
         }
+
         private void RbStorniert_CheckedChanged(object sender, EventArgs e)
         {
-            FilterAnwenden();
-        }
-
-        private void FilterAnwenden()
-        { 
-            // TODO welches Dateum ist ausgewählt
-            // welcher RadioButton = true
-            // aus diesen info WHERE ...datum AND ...checkbox
             RefreshView();
-
-            conn.Open();
-
-            MySqlCommand cmd = conn.CreateCommand();
-
-            cmd.CommandText = "SELECT r.r_id, r.checkIn, r.checkOut, g.g_id, z.z_id, r.r_status, g.g_nachname, g.g_vorname " +
-                                    " FROM reservierung r INNER JOIN gast g ON r.g_id = g.g_id INNER JOIN zimmer z " +
-                                    " ON r.z_id = z.z_id WHERE r_status = 'storniert' ORDER BY z_id ";
-
-            MySqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                long r_id = reader.GetInt64(0);
-                DateTime checkIn = reader.GetDateTime(1);
-                DateTime checkOut = reader.GetDateTime(2);
-                long g_id = reader.GetInt64(3);
-                long z_id = reader.GetInt64(4);
-                string r_status = reader.GetString(5);
-                string g_nachname = reader.GetString(6);
-                string g_vorname = reader.GetString(7);
-                ReservierungenHinzufuegen(new Reservierung(r_id, checkIn, checkOut, g_id, z_id, r_status, g_nachname, g_vorname));
-            }
-            reader.Close();
-
-            conn.Close();
-        }
-
-        private void dateTimePickerBelegunsplan_ValueChanged(object sender, EventArgs e)
-        {
-            // TODO die Reservierungen sollen nach dem ausgewählten Tag gefiltert werden
-            FilterAnwenden();
+            ReservierungenLaden();
         }
     }
 }

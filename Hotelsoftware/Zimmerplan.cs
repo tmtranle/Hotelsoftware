@@ -36,6 +36,7 @@ namespace Hotelsoftware
 
         private void ZimmerLaden()
         {
+            // nach dem ausgewähltem Filter schauen
             string filter;
             if (RbAusserBetrieb.Checked == true)
             {
@@ -58,13 +59,15 @@ namespace Hotelsoftware
                 filter = RbSauber.Text;
             }
 
+            // Verbindung zum Datenbankserver herstellen
             conn.Open();
             MySqlCommand cmd = conn.CreateCommand();
-
+            // wenn RadioButton "alle" ausgewählt, dann alle Zimmer aufrufen
             if (RbAlle.Checked == true)
             {
                 cmd.CommandText = "SELECT z_id, z_kategorie, z_status FROM zimmer ORDER BY z_id";
             }
+            // wenn ein anderer Status ausgewählt ist, nach dem ausgewählten Status die Zimmer aufrufen
             else
             {
                 cmd.CommandText = "SELECT z_id, z_kategorie, z_status FROM zimmer WHERE z_status = @z_status ORDER BY z_id";
@@ -72,6 +75,7 @@ namespace Hotelsoftware
                 cmd.Prepare();
             }
 
+            // reader um die Daten aus der DB zu lesen
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
@@ -81,7 +85,7 @@ namespace Hotelsoftware
                 ZimmerHinzufuegen(new Zimmer(z_id, z_kategorie, z_status));
             }
             reader.Close();
-
+            // Verbindung zum Datenbankserver trennen
             conn.Close();
         }
 
