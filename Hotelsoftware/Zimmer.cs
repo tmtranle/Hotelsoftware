@@ -11,7 +11,7 @@ namespace Hotelsoftware
         // Attribute nach der Definition der Datenbank
         public long z_id { get; }
         public string z_kategorie { get; }
-        public string z_status { get; }
+        public string z_status { get; set; }
 
         // Konstruktor
         public Zimmer(long z_id, string z_kategorie, string z_status)

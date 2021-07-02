@@ -9,7 +9,7 @@ namespace Hotelsoftware
     public class Firma
     {
         // Attribute nach der Definition der Datenbank
-        public long f_id { get; set; }
+        public long f_id { get; }
         public string f_bezeichnung { get; set; }
         public string f_strasse { get; set; }
         public string f_hausnummer { get; set; }

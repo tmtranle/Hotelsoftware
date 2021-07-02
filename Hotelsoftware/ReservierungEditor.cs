@@ -20,10 +20,10 @@ namespace Hotelsoftware
 
         private void CmdGaestekartei_Click(object sender, EventArgs e)
         {
-            Gaestekartei fenster = new Gaestekartei();
-            fenster.ShowDialog();
-            //TODO mit Doppelklick soll der Gast ausgewählt werden,
-            //gemerkt und an den ReservierungsEditor weitergegeben werden
+            MessageBox.Show("TODO Doppelklick in Gästekartei soll der Gast ausgewählt werden, " +
+                "gemerkt und an den ReservierungsEditor weitergegeben werden");
+            //Gaestekartei fenster = new Gaestekartei();
+            //fenster.ShowDialog();
         }
 
         private void CmdAbbruch_Click(object sender, EventArgs e)
@@ -35,13 +35,16 @@ namespace Hotelsoftware
 
         private void CmdResNeuHinzufuegen_Click(object sender, EventArgs e)
         {
+            // TODO Funktion Reservierung neu hinzufügen programmieren
+            MessageBox.Show("TODO Funktion Reservierung neu hinzufügen programmieren");
+
             // Nutzereingaben erhalten
             // Reservierungsnummer darf bei Res. neu hinzufügen nicht ausgefüllt sein
-            if (TbReserNummer.Text != null)
-            {
-                MessageBox.Show("Reservierungsnummer nur bei Suche eingeben");
-                return;
-            }
+            //if (TbReserNummer.Text != null)
+            //{
+            //    MessageBox.Show("Reservierungsnummer nur bei Suche eingeben");
+            //    return;
+            //}
             //string z_id = CbZimmerNummer.SelectedText;
             //long g_id = long.Parse(TbVersteckt_g_id.Text);
             //string r_status = CbReserStatus.SelectedText;
@@ -72,25 +75,24 @@ namespace Hotelsoftware
             //conn.Close();
 
             //Reservierung hinzuzufuegen = new Reservierung();
-
         }
 
         private void CmdResAendern_Click(object sender, EventArgs e)
         {
             // TODO Funktion Reservierung ändern programmieren
-            MessageBox.Show("TODO");
+            MessageBox.Show("TODO Funktion Reservierung ändern programmieren");
         }
 
         private void CmdReserSuchen_Click(object sender, EventArgs e)
         {
             // TODO Funktion Reservierung suchen programmieren
-            MessageBox.Show("TODO");
+            MessageBox.Show("TODO Funktion Reservierung suchen programmieren");
         }
 
         private void CmdResFixleistungen_Click(object sender, EventArgs e)
         {
             // TODO Fenster Leistungen programmieren
-            MessageBox.Show("TODO");
+            MessageBox.Show("TODO Fenster Leistungen programmieren");
         }
     }
 }

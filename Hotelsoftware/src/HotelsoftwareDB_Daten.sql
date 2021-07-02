@@ -28,7 +28,7 @@ INSERT INTO gast VALUES
                         (NULL, 'Hubert', 'Meier', '2001-01-01', 'Paul-Lincke-Ufer', '17', '10999', 'Berlin', 'Deutschland', 1),
                         (NULL, 'Franziska', 'Vogel', '1990-08-16', 'Lottumstrasse', '25', '10117', 'Berlin', 'Deutschland', 1),
                         (NULL, 'Jessica', 'Weiss', '1979-07-20', 'Knorrpromenade', '17', '10245', 'Berlin', 'Deutschland', NULL);
-
+DELETE FROM gast WHERE g_id = 54;
 INSERT INTO zimmer VALUES
 (100, 'DZ', 'sauber'),
                         (101, 'DZ', 'dreckig'),
@@ -38,13 +38,12 @@ INSERT INTO zimmer VALUES
                         (105, 'DZ', 'sauber'),
                         (106, 'DZ', 'checken'),
                         (107, 'DZ', 'sauber'),
+                        (108, 'DZ', 'checken'),
                         (109, 'DZ', 'sauber'),
                         (110, 'DZ', 'sauber'),
                         (111, 'DZ', 'sauber'),
                         (112, 'DZ', 'dreckig'),
                         (114, 'DZ', 'dreckig');
-INSERT INTO zimmer VALUES
-(108, 'EZ', 'sauber');
 INSERT INTO zimmer VALUES
 (200, 'DZ', 'dreckig'),
                         (201, 'EZ', 'dreckig'),
@@ -54,13 +53,13 @@ INSERT INTO zimmer VALUES
                         (205, 'EZ', 'checken'),
                         (206, 'EZ', 'sauber'),
                         (207, 'EZ', 'checken'),
+                        (208, 'EZ', 'checken'),
                         (209, 'EZ', 'sauber'),
                         (210, 'EZ', 'checken'),
                         (211, 'TRI', 'sauber'),
                         (212, 'TRI', 'checken'),
                         (214, 'TRI', 'sauber');
-INSERT INTO zimmer VALUES
-(208, 'EZ', 'sauber');
+
 
 INSERT INTO reservierung VALUES
 (NULL, '2021-06-22', '2021-06-22', 4, 106),
@@ -69,6 +68,28 @@ INSERT INTO reservierung VALUES
 (NULL, '2021-06-22', '2021-06-24', 43, 209),
 (NULL, '2021-06-22', '2021-06-22', 50, 101),
 (NULL, '2021-06-22', '2021-06-23', 51, 100);
+UPDATE reservierung SET r_status = 'storniert' WHERE r_id = 4;
+UPDATE reservierung SET r_status = 'garantiert' WHERE r_id = 15;
+UPDATE reservierung SET r_status = 'garantiert' WHERE r_id = 20;
+UPDATE reservierung SET r_status = 'NoShow' WHERE r_id = 25;
+UPDATE reservierung SET r_status = 'garantiert' WHERE r_id = 26;
+UPDATE reservierung SET r_status = 'Option' WHERE r_id = 28;
+
+INSERT INTO reservierung VALUES
+(NULL, '2021-06-30', '2021-07-01', 4, 106, 'garantiert'),
+(NULL, '2021-06-30', '2021-07-01', 3, 206, 'garantiert'),
+(NULL, '2021-06-30', '2021-07-04', 52, 207, 'garantiert'),
+(NULL, '2021-06-30', '2021-07-03', 43, 209, 'garantiert'),
+(NULL, '2021-07-01', '2021-07-01', 50, 101, 'storniert'),
+(NULL, '2021-07-01', '2021-07-10', 51, 100, 'Option');
+
+INSERT INTO reservierung VALUES
+(NULL, '2021-07-01', '2021-07-04', 57, 106, 'garantiert'),
+(NULL, '2021-07-01', '2021-07-03', 40, 206, 'garantiert'),
+(NULL, '2021-07-01', '2021-07-04', 43, 207, 'garantiert'),
+(NULL, '2021-07-02', '2021-07-03', 47, 209, 'garantiert'),
+(NULL, '2021-07-02', '2021-07-09', 46, 101, 'storniert'),
+(NULL, '2021-07-02', '2021-07-12', 50, 100, 'Option');
 
 INSERT INTO leistung VALUES
 (NULL, 'Logis', 79.00),

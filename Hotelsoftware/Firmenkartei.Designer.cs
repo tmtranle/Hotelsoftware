@@ -203,7 +203,7 @@ namespace Hotelsoftware
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(666, 340);
+            this.ClientSize = new System.Drawing.Size(666, 307);
             this.Controls.Add(this.TbHausnummer);
             this.Controls.Add(this.LblHausnummer);
             this.Controls.Add(this.CmdFirmaSuchen);

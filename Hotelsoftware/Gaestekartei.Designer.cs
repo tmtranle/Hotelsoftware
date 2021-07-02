@@ -61,7 +61,7 @@ namespace Hotelsoftware
             this.CmdGastNeuHinzufuegen.Enabled = false;
             this.CmdGastNeuHinzufuegen.Location = new System.Drawing.Point(521, 309);
             this.CmdGastNeuHinzufuegen.Name = "CmdGastNeuHinzufuegen";
-            this.CmdGastNeuHinzufuegen.Size = new System.Drawing.Size(128, 23);
+            this.CmdGastNeuHinzufuegen.Size = new System.Drawing.Size(139, 23);
             this.CmdGastNeuHinzufuegen.TabIndex = 12;
             this.CmdGastNeuHinzufuegen.Text = "Neu hinzufügen";
             this.CmdGastNeuHinzufuegen.UseVisualStyleBackColor = true;
@@ -70,9 +70,9 @@ namespace Hotelsoftware
             // CmdGastSpeichern
             // 
             this.CmdGastSpeichern.Enabled = false;
-            this.CmdGastSpeichern.Location = new System.Drawing.Point(386, 338);
+            this.CmdGastSpeichern.Location = new System.Drawing.Point(375, 338);
             this.CmdGastSpeichern.Name = "CmdGastSpeichern";
-            this.CmdGastSpeichern.Size = new System.Drawing.Size(128, 23);
+            this.CmdGastSpeichern.Size = new System.Drawing.Size(139, 23);
             this.CmdGastSpeichern.TabIndex = 13;
             this.CmdGastSpeichern.Text = "Änderungen speichern";
             this.CmdGastSpeichern.UseVisualStyleBackColor = true;
@@ -83,7 +83,7 @@ namespace Hotelsoftware
             this.CmdGastEntfernen.Enabled = false;
             this.CmdGastEntfernen.Location = new System.Drawing.Point(521, 338);
             this.CmdGastEntfernen.Name = "CmdGastEntfernen";
-            this.CmdGastEntfernen.Size = new System.Drawing.Size(128, 23);
+            this.CmdGastEntfernen.Size = new System.Drawing.Size(139, 23);
             this.CmdGastEntfernen.TabIndex = 14;
             this.CmdGastEntfernen.Text = "Entfernen";
             this.CmdGastEntfernen.UseVisualStyleBackColor = true;
@@ -243,9 +243,9 @@ namespace Hotelsoftware
             // 
             // CmdGastSuchen
             // 
-            this.CmdGastSuchen.Location = new System.Drawing.Point(387, 309);
+            this.CmdGastSuchen.Location = new System.Drawing.Point(376, 309);
             this.CmdGastSuchen.Name = "CmdGastSuchen";
-            this.CmdGastSuchen.Size = new System.Drawing.Size(128, 23);
+            this.CmdGastSuchen.Size = new System.Drawing.Size(139, 23);
             this.CmdGastSuchen.TabIndex = 11;
             this.CmdGastSuchen.Text = "Suchen";
             this.CmdGastSuchen.UseVisualStyleBackColor = true;

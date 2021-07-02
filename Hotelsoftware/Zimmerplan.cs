@@ -99,12 +99,14 @@ namespace Hotelsoftware
 
         private void CmdStatusAendern_Click(object sender, EventArgs e)
         {
+            // Fenster für Editor öffnen
             ZimmerstatusEditor fenster = new ZimmerstatusEditor();
             fenster.ShowDialog();
             if (fenster.DialogResult == DialogResult.OK)
             {
                 RefreshView();
                 ZimmerLaden();
+                // Filter alle markieren, da wieder alle Zimmer angezeigt
                 RbAlle.Checked = true;
             }
         }

@@ -13,7 +13,6 @@ namespace Hotelsoftware
 {
     public partial class ZimmerstatusEditor : Form
     {
-
         public ZimmerstatusEditor()
         {
             InitializeComponent();
@@ -35,11 +34,12 @@ namespace Hotelsoftware
             // string zerschneiden
             String[] teile = eingabe.Split(',');
             
+            // Verbindung herstellen
             conn.Open();
-            // mit der id, solange den status des zimmers ändern, bis jeder Zimmerstatus geändert wurde
+            // mit der id, solange den Status des Zimmers ändern, bis jeder Zimmerstatus geändert wurde
             foreach (string teil in teile)
             {
-                // Daten in DB aktualisiert
+                // Daten in DB aktualisieren
                 long id = Int64.Parse(teil);
                 
                 MySqlCommand cmd = conn.CreateCommand();
@@ -50,8 +50,9 @@ namespace Hotelsoftware
                 cmd.ExecuteNonQuery();
 
             }
+            // Verbindung schließen
             conn.Close();
-
+            // Erfolg signalisieren
             DialogResult = DialogResult.OK;
             this.Close();
         }

@@ -21,7 +21,7 @@ namespace Hotelsoftware
         {
             // zur Liste hinzufügen
             alleFirmen.Add(firma);
-            // zur Model hinzufügen
+            // zum Model hinzufügen
             LbFirmen.Items.Add(firma.ToString());
         }
 
@@ -36,11 +36,9 @@ namespace Hotelsoftware
         {
             // Server kontaktieren
             conn.Open();
-
             MySqlCommand cmd = conn.CreateCommand();
-
+            // SQL Abfrage
             cmd.CommandText = "SELECT f_id, f_bezeichnung, f_strasse, f_hausnummer, f_postleitzahl, f_stadt, f_land FROM firma ORDER BY f_bezeichnung";
-
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
@@ -54,6 +52,7 @@ namespace Hotelsoftware
                 FirmaHinzufuegen(new Firma(f_id, f_bezeichnung, f_strasse, f_hausnummer, f_postleitzahl, f_stadt, f_land));
             }
             reader.Close();
+            // Verbindung beenden
             conn.Close();
         }
 
@@ -78,16 +77,16 @@ namespace Hotelsoftware
             // Server kontaktieren
             conn.Open();
             MySqlCommand cmd = conn.CreateCommand();
+            // SQL Abfrage
             cmd.CommandText = "SELECT f_id, f_bezeichnung, f_strasse, f_hausnummer, f_postleitzahl, f_stadt, f_land " +
                 " FROM firma WHERE f_bezeichnung like @f_bezeichnung ORDER BY f_bezeichnung";
-
             cmd.Parameters.AddWithValue("f_bezeichnung", "%"+f_bezeichnung+"%");
-            
             cmd.Prepare();
             MySqlDataReader reader = cmd.ExecuteReader();
+            // Lb und Liste erstmal leeren
             LbFirmen.Items.Clear();
             alleFirmen.Clear();
-
+            // Ergebnis anzeigen
             while (reader.Read())
             {
                 long f_id = reader.GetInt64(0);
@@ -101,7 +100,7 @@ namespace Hotelsoftware
                 
             }
             reader.Close();
-            
+            // Verbindung beenden
             conn.Close();
 
         }
@@ -113,8 +112,7 @@ namespace Hotelsoftware
 
         private void FirmaNeuHinzufuegen() 
         {
-            int anzahl; // für die Anzeige, wenn Eintrag hinzugefügt werden konnte
-
+            // Nutzereingaben erhalten
             string f_bezeichnung = TbFirmenbezeichnung.Text;
             if (f_bezeichnung.Length == 0)
             {
@@ -141,6 +139,7 @@ namespace Hotelsoftware
             cmd.Parameters.AddWithValue("f_stadt", f_stadt);
             cmd.Parameters.AddWithValue("f_land", f_land);
             cmd.Prepare();
+            int anzahl; // für die Anzeige, wenn Eintrag hinzugefügt werden konnte
             anzahl = cmd.ExecuteNonQuery();
             if (anzahl > 0)
             {
@@ -182,8 +181,6 @@ namespace Hotelsoftware
 
         private void FirmaSpeichern()
         {
-             
-
             // Index für ausgewählte Firma definieren zum bearbeiten
             int bearbeitenIndex = LbFirmen.SelectedIndex;
             if (bearbeitenIndex < 0 || bearbeitenIndex >= alleFirmen.Count)

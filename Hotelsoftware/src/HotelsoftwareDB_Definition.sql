@@ -44,6 +44,9 @@ CREATE TABLE reservierung
     z_id INTEGER,
     FOREIGN KEY z_id_fk (z_id) REFERENCES zimmer (z_id)
 );
+ALTER TABLE reservierung
+ADD r_status VARCHAR(50);
+
 
 CREATE TABLE leistung
 (

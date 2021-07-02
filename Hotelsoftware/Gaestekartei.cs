@@ -17,7 +17,9 @@ namespace Hotelsoftware
 
         public void GastHinzufuegen(Gast gast)
         {
+            // zur Liste hinzufügen
             alleGaeste.Add(gast);
+            // zum Model hinzufügen
             LbGaeste.Items.Add(gast.ToString());
         }
 
@@ -34,6 +36,7 @@ namespace Hotelsoftware
             // Server kontaktieren
             conn.Open();
             MySqlCommand cmd = conn.CreateCommand();
+            // SQL Abfrage
             cmd.CommandText = "SELECT g_id, g_vorname, g_nachname, g_geburtsdatum, g_strasse, g_hausnummer,g_postleitzahl, g_stadt, g_land, f.f_id, f_bezeichnung " +
                                     " FROM gast " + 
                                     " LEFT OUTER JOIN firma f on f.f_id = gast.f_id " +
@@ -55,6 +58,7 @@ namespace Hotelsoftware
                 GastHinzufuegen(new Gast(g_id, g_vorname, g_nachname, g_geburtsdatum, g_strasse, g_hausnummer, g_postleitzahl, g_stadt, g_land, f_id, f_bezeichnung));
             }
             reader.Close();
+            // Verbindung beenden
             conn.Close();
         }
         private void CmdGastSuchen_Click(object sender, EventArgs e)
@@ -77,6 +81,7 @@ namespace Hotelsoftware
             // Server kontaktieren
             conn.Open();
             MySqlCommand cmd = conn.CreateCommand();
+            // SQL Abfrage
             cmd.CommandText = "SELECT g_id, g_vorname, g_nachname, g_geburtsdatum, g_strasse, g_hausnummer,g_postleitzahl, g_stadt, g_land, f.f_id, f_bezeichnung " +
                                    " FROM gast " +
                                    " LEFT OUTER JOIN firma f on f.f_id = gast.f_id " +
@@ -85,9 +90,10 @@ namespace Hotelsoftware
             cmd.Parameters.AddWithValue("g_nachname", "%" + g_nachname + "%");
             cmd.Prepare();
             MySqlDataReader reader = cmd.ExecuteReader();
+            // Lb und Liste erstmal leeren
             LbGaeste.Items.Clear();
             alleGaeste.Clear();
-
+            // Ergebnis anzeigen
             while (reader.Read())
             {
                 long g_id = reader.GetInt64(0);
@@ -103,7 +109,8 @@ namespace Hotelsoftware
                 string f_bezeichnung = f_id == null ? null : reader.GetString(10);
                 GastHinzufuegen(new Gast(g_id, g_vorname, g_nachname, g_geburtsdatum, g_strasse, g_hausnummer, g_postleitzahl, g_stadt, g_land, f_id, f_bezeichnung));
             }
-            reader.Close();   
+            reader.Close();
+            // Verbindung beenden
             conn.Close();
         }
 
@@ -115,9 +122,7 @@ namespace Hotelsoftware
 
         private void GastNeuHinzufuegen()
         {
-
-            int anzahl; // für die Anzeige, wenn ein Eintrag hinzugefügt werden konnte
-
+            // Nutzereingaben erhalten
             string g_vorname = TbVorname.Text;
             string g_nachname = TbNachname.Text;
             if (g_nachname.Length == 0)
@@ -137,11 +142,6 @@ namespace Hotelsoftware
             {
                 return;
             }
-            // TODO 
-            //else
-            //{
-            //  beim neu erstellen eines Gastes, kann man schon Firma auswählen?
-            //}
 
             // Server kontaktieren
             conn.Open();
@@ -160,6 +160,7 @@ namespace Hotelsoftware
             cmd.Parameters.AddWithValue("g_land", g_land);
             cmd.Parameters.AddWithValue("f_id", f_id);
             cmd.Prepare();
+            int anzahl; // für die Anzeige, wenn ein Eintrag hinzugefügt werden konnte
             anzahl = cmd.ExecuteNonQuery();
             if (anzahl > 0)
             {
@@ -202,8 +203,6 @@ namespace Hotelsoftware
 
         public void GastSpeichern()
         {
-            int anzahl; // für die Anzeige, wenn Eintrag bearbeitet werden konnte
-
             // Index für ausgewählte Firma definieren zum bearbeiten
             int bearbeitenIndex = LbGaeste.SelectedIndex;
             if (bearbeitenIndex < 0 || bearbeitenIndex >= alleGaeste.Count)
@@ -244,6 +243,7 @@ namespace Hotelsoftware
             cmd.Parameters.AddWithValue("g_stadt", g_stadt);
             cmd.Parameters.AddWithValue("g_land", g_land);
             cmd.Prepare();
+            int anzahl; // für die Anzeige, wenn Eintrag bearbeitet werden konnte
             anzahl = cmd.ExecuteNonQuery();
             if (anzahl > 0)
             {

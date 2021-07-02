@@ -9,14 +9,14 @@ namespace Hotelsoftware
     public class Gast
     {   // Attribute nach der Definition der Datenbank
         public long g_id { get; }
-        public string g_vorname { get; }
-        public string g_nachname { get; }
-        public DateTime g_geburtsdatum { get; }
-        public string g_strasse { get; }
-        public string g_hausnummer { get; } 
-        public string g_postleitzahl { get; }
-        public string g_stadt { get; }
-        public string g_land { get; }
+        public string g_vorname { get; set; }
+        public string g_nachname { get; set; }
+        public DateTime g_geburtsdatum { get; set; }
+        public string g_strasse { get; set; }
+        public string g_hausnummer { get; set; } 
+        public string g_postleitzahl { get; set; }
+        public string g_stadt { get; set; }
+        public string g_land { get; set; }
         public long? f_id { get; set; }
         public string f_bezeichnung { get; set; }
 
