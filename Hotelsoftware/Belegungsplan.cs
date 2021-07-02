@@ -41,9 +41,9 @@ namespace Hotelsoftware
        
         private void ReservierungenLaden()
         {
-            // TODO nach dem ausgewählten Datum filtern
+            // nach dem ausgewählten Datum filtern
             DateTime datum = dateTimePickerBelegunsplan.Value;
-            // TODO nach dem ausgewählten Status filtern 
+            // nach dem ausgewählten Status filtern 
             string filter;
             if (RbGarantiert.Checked == true)
             {
@@ -66,17 +66,15 @@ namespace Hotelsoftware
             conn.Open();
             MySqlCommand cmd = conn.CreateCommand();
 
-            // TODO HERAUSFINDEN; WARUM DAS DATUM NICHT GEFILTERT WIRD  
-
             if (RbAlle.Checked == true)
             {
                 cmd.CommandText = "SELECT r_id, z_id, g.g_id, g_nachname, g_vorname, checkIn, checkOut, r_status " +
                                        " FROM reservierung " +
                                        " LEFT JOIN gast g on g.g_id = reservierung.g_id " +
-                                       // " WHERE checkIn = @checkIn " +
+                                       " WHERE checkIn = date(@checkIn) " +
                                        " ORDER BY z_id";
-                //cmd.Parameters.AddWithValue("checkIn", datum);
-                //cmd.Prepare();
+                cmd.Parameters.AddWithValue("checkIn", datum);
+                
             }
             else
             {
@@ -84,13 +82,13 @@ namespace Hotelsoftware
                                         " FROM reservierung " +
                                         " LEFT JOIN gast g on g.g_id = reservierung.g_id " +
                                         " WHERE r_status = @r_status " +
-                                        //" AND checkIn = @checkIn " +
+                                        " AND checkIn = date(@checkIn) " +
                                         " ORDER BY z_id";
                 cmd.Parameters.AddWithValue("r_status", filter);
-                //cmd.Parameters.AddWithValue("checkIn", datum);
-                cmd.Prepare();
+                cmd.Parameters.AddWithValue("checkIn", datum);
+                
             }
-
+            cmd.Prepare();
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
@@ -146,6 +144,24 @@ namespace Hotelsoftware
         {
             RefreshView();
             ReservierungenLaden();
+        }
+
+        private void CmdResNeuHinzufuegen_Click(object sender, EventArgs e)
+        {
+            ReservierungEditor fenster = new ReservierungEditor();
+            fenster.ShowDialog();
+        }
+
+        private void CmdResEinchecken_Click(object sender, EventArgs e)
+        {
+            CmdResStornieren.Enabled = true;
+        }
+
+        private void CmdResCheckInDialog_Click(object sender, EventArgs e)
+        {
+            ReservierungEditor fenster = new ReservierungEditor();
+            fenster.ShowDialog();
+
         }
     }
 }

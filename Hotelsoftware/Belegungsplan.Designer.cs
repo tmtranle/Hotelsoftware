@@ -43,9 +43,15 @@ namespace Hotelsoftware
             this.RbOption = new System.Windows.Forms.RadioButton();
             this.RbNoShow = new System.Windows.Forms.RadioButton();
             this.RbStorniert = new System.Windows.Forms.RadioButton();
-            this.GbReservierungen = new System.Windows.Forms.GroupBox();
+            this.GbReservierungenStatus = new System.Windows.Forms.GroupBox();
+            this.GbReservierungAktionen = new System.Windows.Forms.GroupBox();
+            this.CmdResCheckInDialog = new System.Windows.Forms.Button();
+            this.CmdResStornieren = new System.Windows.Forms.Button();
+            this.CmdResBearbeiten = new System.Windows.Forms.Button();
+            this.CmdResNeuHinzufuegen = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReservierungen)).BeginInit();
-            this.GbReservierungen.SuspendLayout();
+            this.GbReservierungenStatus.SuspendLayout();
+            this.GbReservierungAktionen.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridViewReservierungen
@@ -102,7 +108,7 @@ namespace Hotelsoftware
             // 
             // dateTimePickerBelegunsplan
             // 
-            this.dateTimePickerBelegunsplan.Location = new System.Drawing.Point(12, 41);
+            this.dateTimePickerBelegunsplan.Location = new System.Drawing.Point(12, 37);
             this.dateTimePickerBelegunsplan.Name = "dateTimePickerBelegunsplan";
             this.dateTimePickerBelegunsplan.Size = new System.Drawing.Size(200, 23);
             this.dateTimePickerBelegunsplan.TabIndex = 1;
@@ -164,33 +170,86 @@ namespace Hotelsoftware
             this.RbStorniert.UseVisualStyleBackColor = true;
             this.RbStorniert.CheckedChanged += new System.EventHandler(this.RbStorniert_CheckedChanged);
             // 
-            // GbReservierungen
+            // GbReservierungenStatus
             // 
-            this.GbReservierungen.Controls.Add(this.RbAlle);
-            this.GbReservierungen.Controls.Add(this.RbStorniert);
-            this.GbReservierungen.Controls.Add(this.RbGarantiert);
-            this.GbReservierungen.Controls.Add(this.RbNoShow);
-            this.GbReservierungen.Controls.Add(this.RbOption);
-            this.GbReservierungen.Location = new System.Drawing.Point(12, 70);
-            this.GbReservierungen.Name = "GbReservierungen";
-            this.GbReservierungen.Size = new System.Drawing.Size(200, 153);
-            this.GbReservierungen.TabIndex = 8;
-            this.GbReservierungen.TabStop = false;
-            this.GbReservierungen.Text = "Reservierungen";
+            this.GbReservierungenStatus.Controls.Add(this.RbAlle);
+            this.GbReservierungenStatus.Controls.Add(this.RbStorniert);
+            this.GbReservierungenStatus.Controls.Add(this.RbGarantiert);
+            this.GbReservierungenStatus.Controls.Add(this.RbNoShow);
+            this.GbReservierungenStatus.Controls.Add(this.RbOption);
+            this.GbReservierungenStatus.Location = new System.Drawing.Point(12, 66);
+            this.GbReservierungenStatus.Name = "GbReservierungenStatus";
+            this.GbReservierungenStatus.Size = new System.Drawing.Size(200, 153);
+            this.GbReservierungenStatus.TabIndex = 8;
+            this.GbReservierungenStatus.TabStop = false;
+            this.GbReservierungenStatus.Text = "Reservierungen nach Status";
+            // 
+            // GbReservierungAktionen
+            // 
+            this.GbReservierungAktionen.Controls.Add(this.CmdResCheckInDialog);
+            this.GbReservierungAktionen.Controls.Add(this.CmdResStornieren);
+            this.GbReservierungAktionen.Controls.Add(this.CmdResBearbeiten);
+            this.GbReservierungAktionen.Controls.Add(this.CmdResNeuHinzufuegen);
+            this.GbReservierungAktionen.Location = new System.Drawing.Point(12, 225);
+            this.GbReservierungAktionen.Name = "GbReservierungAktionen";
+            this.GbReservierungAktionen.Size = new System.Drawing.Size(200, 148);
+            this.GbReservierungAktionen.TabIndex = 9;
+            this.GbReservierungAktionen.TabStop = false;
+            this.GbReservierungAktionen.Text = "Reservierung";
+            // 
+            // CmdResCheckInDialog
+            // 
+            this.CmdResCheckInDialog.Location = new System.Drawing.Point(7, 110);
+            this.CmdResCheckInDialog.Name = "CmdResCheckInDialog";
+            this.CmdResCheckInDialog.Size = new System.Drawing.Size(187, 23);
+            this.CmdResCheckInDialog.TabIndex = 10;
+            this.CmdResCheckInDialog.Text = "Check-In Dialog öffnen";
+            this.CmdResCheckInDialog.UseVisualStyleBackColor = true;
+            this.CmdResCheckInDialog.Click += new System.EventHandler(this.CmdResCheckInDialog_Click);
+            // 
+            // CmdResStornieren
+            // 
+            this.CmdResStornieren.Location = new System.Drawing.Point(7, 81);
+            this.CmdResStornieren.Name = "CmdResStornieren";
+            this.CmdResStornieren.Size = new System.Drawing.Size(187, 23);
+            this.CmdResStornieren.TabIndex = 2;
+            this.CmdResStornieren.Text = "Stornieren";
+            this.CmdResStornieren.UseVisualStyleBackColor = true;
+            // 
+            // CmdResBearbeiten
+            // 
+            this.CmdResBearbeiten.Location = new System.Drawing.Point(7, 52);
+            this.CmdResBearbeiten.Name = "CmdResBearbeiten";
+            this.CmdResBearbeiten.Size = new System.Drawing.Size(187, 23);
+            this.CmdResBearbeiten.TabIndex = 1;
+            this.CmdResBearbeiten.Text = "Bearbeiten";
+            this.CmdResBearbeiten.UseVisualStyleBackColor = true;
+            // 
+            // CmdResNeuHinzufuegen
+            // 
+            this.CmdResNeuHinzufuegen.Location = new System.Drawing.Point(7, 23);
+            this.CmdResNeuHinzufuegen.Name = "CmdResNeuHinzufuegen";
+            this.CmdResNeuHinzufuegen.Size = new System.Drawing.Size(187, 23);
+            this.CmdResNeuHinzufuegen.TabIndex = 0;
+            this.CmdResNeuHinzufuegen.Text = "Neu hinzufügen";
+            this.CmdResNeuHinzufuegen.UseVisualStyleBackColor = true;
+            this.CmdResNeuHinzufuegen.Click += new System.EventHandler(this.CmdResNeuHinzufuegen_Click);
             // 
             // Belegungsplan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(987, 800);
-            this.Controls.Add(this.GbReservierungen);
+            this.Controls.Add(this.GbReservierungAktionen);
+            this.Controls.Add(this.GbReservierungenStatus);
             this.Controls.Add(this.dateTimePickerBelegunsplan);
             this.Controls.Add(this.dataGridViewReservierungen);
             this.Name = "Belegungsplan";
             this.Text = "Belegungsplan";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReservierungen)).EndInit();
-            this.GbReservierungen.ResumeLayout(false);
-            this.GbReservierungen.PerformLayout();
+            this.GbReservierungenStatus.ResumeLayout(false);
+            this.GbReservierungenStatus.PerformLayout();
+            this.GbReservierungAktionen.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -211,6 +270,11 @@ namespace Hotelsoftware
         private System.Windows.Forms.DataGridViewTextBoxColumn checkIn;
         private System.Windows.Forms.DataGridViewTextBoxColumn checkOut;
         private System.Windows.Forms.DataGridViewTextBoxColumn r_status;
-        private System.Windows.Forms.GroupBox GbReservierungen;
+        private System.Windows.Forms.GroupBox GbReservierungenStatus;
+        private System.Windows.Forms.GroupBox GbReservierungAktionen;
+        private System.Windows.Forms.Button CmdResNeuHinzufuegen;
+        private System.Windows.Forms.Button CmdResBearbeiten;
+        private System.Windows.Forms.Button CmdResStornieren;
+        private System.Windows.Forms.Button CmdResCheckInDialog;
     }
 }

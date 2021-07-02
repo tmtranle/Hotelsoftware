@@ -71,6 +71,7 @@ namespace Hotelsoftware
             this.CmdAbbruch.TabIndex = 3;
             this.CmdAbbruch.Text = "Abbruch";
             this.CmdAbbruch.UseVisualStyleBackColor = true;
+            this.CmdAbbruch.Click += new System.EventHandler(this.CmdAbbruch_Click);
             // 
             // LblStatus
             // 

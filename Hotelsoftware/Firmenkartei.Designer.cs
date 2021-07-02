@@ -138,7 +138,7 @@ namespace Hotelsoftware
             this.TbLand.Location = new System.Drawing.Point(318, 178);
             this.TbLand.Name = "TbLand";
             this.TbLand.Size = new System.Drawing.Size(322, 23);
-            this.TbLand.TabIndex = 10;
+            this.TbLand.TabIndex = 6;
             // 
             // CmdFirmaSuchen
             // 

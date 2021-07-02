@@ -12,14 +12,13 @@ namespace Hotelsoftware
         public long r_id { get; }
         public long g_id { get; set; }
         public long z_id { get; set; }
+        public long z_kategorie { get; set; }
         public string g_nachname { get; set; }
         public string g_vorname { get; set; }
         public DateTime checkIn { get; set; }
         public DateTime checkOut { get; set; }
         public string r_status { get; set; }
         
-
-
         // Konstruktor
         public Reservierung(long r_id, long z_id, long g_id, string g_nachname, string g_vorname, DateTime checkIn, DateTime checkOut, string r_status)
         {

@@ -62,7 +62,7 @@ namespace Hotelsoftware
             this.CmdGastNeuHinzufuegen.Location = new System.Drawing.Point(521, 309);
             this.CmdGastNeuHinzufuegen.Name = "CmdGastNeuHinzufuegen";
             this.CmdGastNeuHinzufuegen.Size = new System.Drawing.Size(128, 23);
-            this.CmdGastNeuHinzufuegen.TabIndex = 13;
+            this.CmdGastNeuHinzufuegen.TabIndex = 12;
             this.CmdGastNeuHinzufuegen.Text = "Neu hinzufügen";
             this.CmdGastNeuHinzufuegen.UseVisualStyleBackColor = true;
             this.CmdGastNeuHinzufuegen.Click += new System.EventHandler(this.CmdGastNeuHinzufuegen_Click);
@@ -73,7 +73,7 @@ namespace Hotelsoftware
             this.CmdGastSpeichern.Location = new System.Drawing.Point(386, 338);
             this.CmdGastSpeichern.Name = "CmdGastSpeichern";
             this.CmdGastSpeichern.Size = new System.Drawing.Size(128, 23);
-            this.CmdGastSpeichern.TabIndex = 11;
+            this.CmdGastSpeichern.TabIndex = 13;
             this.CmdGastSpeichern.Text = "Änderungen speichern";
             this.CmdGastSpeichern.UseVisualStyleBackColor = true;
             this.CmdGastSpeichern.Click += new System.EventHandler(this.CmdGastSpeichern_Click);
@@ -84,7 +84,7 @@ namespace Hotelsoftware
             this.CmdGastEntfernen.Location = new System.Drawing.Point(521, 338);
             this.CmdGastEntfernen.Name = "CmdGastEntfernen";
             this.CmdGastEntfernen.Size = new System.Drawing.Size(128, 23);
-            this.CmdGastEntfernen.TabIndex = 12;
+            this.CmdGastEntfernen.TabIndex = 14;
             this.CmdGastEntfernen.Text = "Entfernen";
             this.CmdGastEntfernen.UseVisualStyleBackColor = true;
             this.CmdGastEntfernen.Click += new System.EventHandler(this.CmdGastEntfernen_Click);
@@ -96,7 +96,7 @@ namespace Hotelsoftware
             this.LbGaeste.Location = new System.Drawing.Point(14, 12);
             this.LbGaeste.Name = "LbGaeste";
             this.LbGaeste.Size = new System.Drawing.Size(303, 349);
-            this.LbGaeste.TabIndex = 3;
+            this.LbGaeste.TabIndex = 0;
             this.LbGaeste.SelectedIndexChanged += new System.EventHandler(this.LbGaeste_SelectedIndexChanged);
             // 
             // LblVorname
@@ -246,7 +246,7 @@ namespace Hotelsoftware
             this.CmdGastSuchen.Location = new System.Drawing.Point(387, 309);
             this.CmdGastSuchen.Name = "CmdGastSuchen";
             this.CmdGastSuchen.Size = new System.Drawing.Size(128, 23);
-            this.CmdGastSuchen.TabIndex = 10;
+            this.CmdGastSuchen.TabIndex = 11;
             this.CmdGastSuchen.Text = "Suchen";
             this.CmdGastSuchen.UseVisualStyleBackColor = true;
             this.CmdGastSuchen.Click += new System.EventHandler(this.CmdGastSuchen_Click);
@@ -272,7 +272,7 @@ namespace Hotelsoftware
             this.CmdFirmaAusGaststammEntfernen.Location = new System.Drawing.Point(668, 254);
             this.CmdFirmaAusGaststammEntfernen.Name = "CmdFirmaAusGaststammEntfernen";
             this.CmdFirmaAusGaststammEntfernen.Size = new System.Drawing.Size(30, 23);
-            this.CmdFirmaAusGaststammEntfernen.TabIndex = 23;
+            this.CmdFirmaAusGaststammEntfernen.TabIndex = 10;
             this.CmdFirmaAusGaststammEntfernen.Text = "x";
             this.CmdFirmaAusGaststammEntfernen.UseVisualStyleBackColor = true;
             this.CmdFirmaAusGaststammEntfernen.Click += new System.EventHandler(this.CmdFirmaAusGaststammEntfernen_Click);

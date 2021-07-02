@@ -54,11 +54,11 @@ namespace Hotelsoftware
 
             DialogResult = DialogResult.OK;
             this.Close();
+        }
 
-            
-
-            
-
+        private void CmdAbbruch_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -148,8 +148,8 @@ namespace Hotelsoftware
             conn.Open();
             MySqlCommand cmd = conn.CreateCommand();
 
-            cmd.CommandText = "INSERT INTO gast (g_vorname, g_nachname, g_geburtsdatum, g_strasse, g_hausnummer, g_postleitzahl, g_stadt, g_land) "
-                + " VALUES(@g_vorname, @g_nachname, @g_geburtsdatum, @g_strasse, @g_hausnummer, @g_postleitzahl, @g_stadt, @g_land) ";
+            cmd.CommandText = "INSERT INTO gast (g_vorname, g_nachname, g_geburtsdatum, g_strasse, g_hausnummer, g_postleitzahl, g_stadt, g_land, f_id) "
+                + " VALUES(@g_vorname, @g_nachname, @g_geburtsdatum, @g_strasse, @g_hausnummer, @g_postleitzahl, @g_stadt, @g_land, @f_id) ";
 
             cmd.Parameters.AddWithValue("g_vorname", g_vorname);
             cmd.Parameters.AddWithValue("g_nachname", g_nachname);
@@ -159,6 +159,7 @@ namespace Hotelsoftware
             cmd.Parameters.AddWithValue("g_postleitzahl", g_postleitzahl);
             cmd.Parameters.AddWithValue("g_stadt", g_stadt);
             cmd.Parameters.AddWithValue("g_land", g_land);
+            cmd.Parameters.AddWithValue("f_id", f_id);
             cmd.Prepare();
             anzahl = cmd.ExecuteNonQuery();
             if (anzahl > 0)
@@ -181,9 +182,6 @@ namespace Hotelsoftware
 
             // Serververbindung beenden
             conn.Close();
-
-           
-
         }
 
         private void TbLeeren()
