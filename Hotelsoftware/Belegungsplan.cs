@@ -159,8 +159,17 @@ namespace Hotelsoftware
 
         private void CmdResCheckInDialog_Click(object sender, EventArgs e)
         {
-            ReservierungEditor fenster = new ReservierungEditor();
-            fenster.ShowDialog();
+            // TODO
+            DialogResult dialogResult = MessageBox.Show("Gast einchecken und Leistungen buchen?", "Check-In", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                // Status des Zimmers ändern in dreckig, da Gast nun im Haus ist
+                // Leistungen, die in Leistungen hinterlegt sind in das Rechnungskonto buchen
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                return;
+            }
 
         }
     }

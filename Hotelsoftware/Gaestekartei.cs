@@ -34,12 +34,10 @@ namespace Hotelsoftware
             // Server kontaktieren
             conn.Open();
             MySqlCommand cmd = conn.CreateCommand();
-
             cmd.CommandText = "SELECT g_id, g_vorname, g_nachname, g_geburtsdatum, g_strasse, g_hausnummer,g_postleitzahl, g_stadt, g_land, f.f_id, f_bezeichnung " +
                                     " FROM gast " + 
                                     " LEFT OUTER JOIN firma f on f.f_id = gast.f_id " +
                                     " ORDER BY g_nachname ";
-
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
@@ -59,7 +57,6 @@ namespace Hotelsoftware
             reader.Close();
             conn.Close();
         }
-
         private void CmdGastSuchen_Click(object sender, EventArgs e)
         {
             GastSuchen();
@@ -77,12 +74,14 @@ namespace Hotelsoftware
                 GaesteLaden();
                 return;
             }
-            
             // Server kontaktieren
             conn.Open();
             MySqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = "SELECT g_id, g_vorname, g_nachname, g_geburtsdatum, g_strasse, g_hausnummer,g_postleitzahl, g_stadt, g_land, f_id " +
-                " FROM gast WHERE g_nachname like @g_nachname ORDER BY g_nachname";
+            cmd.CommandText = "SELECT g_id, g_vorname, g_nachname, g_geburtsdatum, g_strasse, g_hausnummer,g_postleitzahl, g_stadt, g_land, f.f_id, f_bezeichnung " +
+                                   " FROM gast " +
+                                   " LEFT OUTER JOIN firma f on f.f_id = gast.f_id " +
+                                   " WHERE g_nachname like @g_nachname " +
+                                   " ORDER BY g_nachname " ;
             cmd.Parameters.AddWithValue("g_nachname", "%" + g_nachname + "%");
             cmd.Prepare();
             MySqlDataReader reader = cmd.ExecuteReader();
@@ -198,7 +197,7 @@ namespace Hotelsoftware
 
         private void CmdGastSpeichern_Click(object sender, EventArgs e)
         {
-            //GastSpeichern();
+            GastSpeichern();
         }
 
         public void GastSpeichern()
@@ -229,6 +228,7 @@ namespace Hotelsoftware
             cmd.CommandText = "UPDATE gast SET g_vorname = @g_vorname " +
                 " , g_nachname = @g_nachname " +
                 " , g_geburtsdatum = @g_geburtsdatum " +
+                " , g_strasse = @g_strasse " +
                 " , g_hausnummer = @g_hausnummer " +
                 " , g_postleitzahl = @g_postleitzahl " +
                 " , g_stadt = @g_stadt " +
@@ -238,6 +238,7 @@ namespace Hotelsoftware
             cmd.Parameters.AddWithValue("g_vorname", g_vorname);
             cmd.Parameters.AddWithValue("g_nachname", g_nachname);
             cmd.Parameters.AddWithValue("g_geburtsdatum", g_geburtsdatum);
+            cmd.Parameters.AddWithValue("g_strasse", g_strasse);
             cmd.Parameters.AddWithValue("g_hausnummer", g_hausnummer);
             cmd.Parameters.AddWithValue("g_postleitzahl", g_postleitzahl);
             cmd.Parameters.AddWithValue("g_stadt", g_stadt);
@@ -250,6 +251,18 @@ namespace Hotelsoftware
             }
             // Serververbindung beenden
             conn.Close();
+
+            // Änderung in der Listbox anzeigen
+            RefreshView();
+            GaesteLaden();
+        }
+
+        private void RefreshView()
+        {
+            // Liste leeren
+            alleGaeste.Clear();
+            // Model leeren
+            LbGaeste.Items.Clear();
         }
 
         private void CmdGastEntfernen_Click(object sender, EventArgs e)
@@ -300,6 +313,7 @@ namespace Hotelsoftware
             TbStadt.Text = zuBearbeiten.g_stadt;
             TbLand.Text = zuBearbeiten.g_land;
             LblFirmaAnzeigen.Text = zuBearbeiten.f_bezeichnung;
+            dateTimePickerGeburtsdatum.Value = zuBearbeiten.g_geburtsdatum;
             
             // Sobald ein Element der Listbox ausgewählt wird, werden die Buttons Bearbeiten und Entfernen nutzbar
             CmdGastSpeichern.Enabled = true;

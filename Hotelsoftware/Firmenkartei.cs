@@ -227,7 +227,19 @@ namespace Hotelsoftware
             // Serververbindung beenden
             conn.Close();
 
+            // Änderung in der Listbox anzeigen
+            RefreshView();
+            FirmenLaden();
         }
+
+        private void RefreshView()
+        {
+            // Liste leeren
+            alleFirmen.Clear();
+            // Model leeren
+            LbFirmen.Items.Clear();
+        }
+
 
         private void CmdFirmaEntfernen_Click(object sender, EventArgs e)
         {

@@ -49,7 +49,7 @@ namespace Hotelsoftware
             this.CmdResAendern = new System.Windows.Forms.Button();
             this.CmdAbbruch = new System.Windows.Forms.Button();
             this.CmdResLeistungen = new System.Windows.Forms.Button();
-            this.GbFixleistungen = new System.Windows.Forms.GroupBox();
+            this.GbRechnungskonto = new System.Windows.Forms.GroupBox();
             this.dataGridViewFixleistungen = new System.Windows.Forms.DataGridView();
             this.GbGastdaten = new System.Windows.Forms.GroupBox();
             this.TbVersteckt_g_id = new System.Windows.Forms.TextBox();
@@ -64,7 +64,7 @@ namespace Hotelsoftware
             this.CmdGaestekartei = new System.Windows.Forms.Button();
             this.GbZimmer.SuspendLayout();
             this.GbReservierungsdaten.SuspendLayout();
-            this.GbFixleistungen.SuspendLayout();
+            this.GbRechnungskonto.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFixleistungen)).BeginInit();
             this.GbGastdaten.SuspendLayout();
             this.SuspendLayout();
@@ -300,15 +300,15 @@ namespace Hotelsoftware
             this.CmdResLeistungen.UseVisualStyleBackColor = true;
             this.CmdResLeistungen.Click += new System.EventHandler(this.CmdResFixleistungen_Click);
             // 
-            // GbFixleistungen
+            // GbRechnungskonto
             // 
-            this.GbFixleistungen.Controls.Add(this.dataGridViewFixleistungen);
-            this.GbFixleistungen.Location = new System.Drawing.Point(13, 276);
-            this.GbFixleistungen.Name = "GbFixleistungen";
-            this.GbFixleistungen.Size = new System.Drawing.Size(474, 205);
-            this.GbFixleistungen.TabIndex = 7;
-            this.GbFixleistungen.TabStop = false;
-            this.GbFixleistungen.Text = "Fixleistungen";
+            this.GbRechnungskonto.Controls.Add(this.dataGridViewFixleistungen);
+            this.GbRechnungskonto.Location = new System.Drawing.Point(13, 276);
+            this.GbRechnungskonto.Name = "GbRechnungskonto";
+            this.GbRechnungskonto.Size = new System.Drawing.Size(474, 205);
+            this.GbRechnungskonto.TabIndex = 7;
+            this.GbRechnungskonto.TabStop = false;
+            this.GbRechnungskonto.Text = "Rechnungskonto";
             // 
             // dataGridViewFixleistungen
             // 
@@ -430,7 +430,7 @@ namespace Hotelsoftware
             this.Controls.Add(this.CmdGaestekartei);
             this.Controls.Add(this.CmdReserSuchen);
             this.Controls.Add(this.GbGastdaten);
-            this.Controls.Add(this.GbFixleistungen);
+            this.Controls.Add(this.GbRechnungskonto);
             this.Controls.Add(this.CmdResLeistungen);
             this.Controls.Add(this.CmdAbbruch);
             this.Controls.Add(this.CmdResAendern);
@@ -443,7 +443,7 @@ namespace Hotelsoftware
             this.GbZimmer.PerformLayout();
             this.GbReservierungsdaten.ResumeLayout(false);
             this.GbReservierungsdaten.PerformLayout();
-            this.GbFixleistungen.ResumeLayout(false);
+            this.GbRechnungskonto.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFixleistungen)).EndInit();
             this.GbGastdaten.ResumeLayout(false);
             this.GbGastdaten.PerformLayout();
@@ -465,7 +465,7 @@ namespace Hotelsoftware
         private System.Windows.Forms.Label LblAnreise;
         private System.Windows.Forms.Label LblReserNummer;
         private System.Windows.Forms.Label LblZimmerKategorie;
-        private System.Windows.Forms.GroupBox GbFixleistungen;
+        private System.Windows.Forms.GroupBox GbRechnungskonto;
         private System.Windows.Forms.DataGridView dataGridViewFixleistungen;
         private System.Windows.Forms.Label LblZimmerStatus;
         private System.Windows.Forms.ComboBox CbZimmerStatus;
